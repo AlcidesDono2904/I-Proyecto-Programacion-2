@@ -1,5 +1,5 @@
-# I-Proyecto-Programacion-2
-Primer proyecto de programación 2
+# I-Proyecto-Programacion-II
+Primer proyecto de programación II
 
 Estudiantes:
 Alcides 
