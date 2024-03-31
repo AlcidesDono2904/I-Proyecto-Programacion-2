@@ -2,6 +2,7 @@
 #define FECHA_H
 #include <ctime>
 #include <string>
+#include <iostream>
 class Fecha{
 private:
 	unsigned int dia;
@@ -16,6 +17,8 @@ public:
 	void setDia(unsigned int dia);
 	void setMes(unsigned int mes);
 	void setAnio(unsigned int anio);
+	//sobrecarga operador
+	friend std::ostream& operator<<(std::ostream& os, const Fecha& fecha);
 	
 };
 

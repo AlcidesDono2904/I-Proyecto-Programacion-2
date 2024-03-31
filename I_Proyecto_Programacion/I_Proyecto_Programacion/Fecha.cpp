@@ -51,3 +51,8 @@ void Fecha::setMes(unsigned int m){
 void Fecha::setAnio(unsigned int a){
 	anio = a;
 }
+
+std::ostream& operator<<(std::ostream& salida, const Fecha& f){
+	salida << f.dia << "/" << f.mes << "/" << f.anio;
+	return salida;
+}
