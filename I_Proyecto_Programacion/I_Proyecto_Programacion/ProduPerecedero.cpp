@@ -21,7 +21,7 @@ ProduPerecedero::ProduPerecedero(string codigo, string nombre, string descripcio
 
 ProduPerecedero::~ProduPerecedero()
 {
-	ptrPere = NULL;
+	if (ptrPere) delete ptrPere;
 }
 
 void ProduPerecedero::setNacional(bool nacional)

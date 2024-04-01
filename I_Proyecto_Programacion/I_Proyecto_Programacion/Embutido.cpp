@@ -26,7 +26,7 @@ Embutido::Embutido(string codigo, string nombre, string descripcion, double prec
 
 Embutido::~Embutido()
 {
-	ptrEmpaque = NULL;
+	if (ptrEmpaque) delete ptrEmpaque;
 }
 
 void Embutido::setMarca(string marca)

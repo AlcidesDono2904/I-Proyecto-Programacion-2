@@ -1,14 +1,9 @@
 #ifndef PRODUCTO_H
 #define PRODUCTO_H
-/*#codigo: string
-#nombreComercial: string
-#descripcion: string
-#precioCosto: double
-#categoria: string 
-#existencia: int 
-#limite: int */
+
 #include <string>
 #include <sstream>
+#include <iostream>
 #include "Fecha.h"
 class Producto{
 	protected:
@@ -42,5 +37,4 @@ class Producto{
 		void setFechaIngreso(Fecha*);
 		virtual std::string toString();
 };
-
 #endif
