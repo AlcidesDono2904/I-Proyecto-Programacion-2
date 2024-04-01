@@ -104,4 +104,3 @@ std::string Producto::toString(){
 		
 	return ss.str();
 }
-

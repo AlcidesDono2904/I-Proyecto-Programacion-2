@@ -56,3 +56,4 @@ std::ostream& operator<<(std::ostream& salida, const Fecha& f){
 	salida << f.dia << "/" << f.mes << "/" << f.anio;
 	return salida;
 }
+
