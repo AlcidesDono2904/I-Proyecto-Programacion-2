@@ -19,11 +19,14 @@
     <Filter Include="Archivos de origen\Producto">
       <UniqueIdentifier>{74a60341-38d5-4afd-a31d-bbf46f5699ad}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de origen\Carrito">
+      <UniqueIdentifier>{33ee001e-5e84-4319-af1c-6c09efbad065}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Carrrito">
+      <UniqueIdentifier>{4a16d7a6-13e3-4e18-8c61-628f6e04cc92}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="Fecha.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
@@ -50,6 +53,27 @@
     </ClCompile>
     <ClCompile Include="ProduPerecedero.cpp">
       <Filter>Archivos de origen\Producto</Filter>
+    </ClCompile>
+    <ClCompile Include="Carrito.cpp">
+      <Filter>Archivos de origen\Carrito</Filter>
+    </ClCompile>
+    <ClCompile Include="ComponenteAbstracto.cpp">
+      <Filter>Archivos de origen\Carrito</Filter>
+    </ClCompile>
+    <ClCompile Include="DecoradorAbstracto.cpp">
+      <Filter>Archivos de origen\Carrito</Filter>
+    </ClCompile>
+    <ClCompile Include="DecoradorAbarrote.cpp">
+      <Filter>Archivos de origen\Carrito</Filter>
+    </ClCompile>
+    <ClCompile Include="DecoradorConserva.cpp">
+      <Filter>Archivos de origen\Carrito</Filter>
+    </ClCompile>
+    <ClCompile Include="DecoradorEmbutido.cpp">
+      <Filter>Archivos de origen\Carrito</Filter>
+    </ClCompile>
+    <ClCompile Include="Source.cpp">
+      <Filter>Archivos de recursos</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -79,6 +103,24 @@
     </ClInclude>
     <ClInclude Include="ProduPerecedero.h">
       <Filter>Archivos de encabezado\Producto</Filter>
+    </ClInclude>
+    <ClInclude Include="Carrito.h">
+      <Filter>Archivos de encabezado\Carrrito</Filter>
+    </ClInclude>
+    <ClInclude Include="ComponenteAbstracto.h">
+      <Filter>Archivos de encabezado\Carrrito</Filter>
+    </ClInclude>
+    <ClInclude Include="DecoradorAbstracto.h">
+      <Filter>Archivos de encabezado\Carrrito</Filter>
+    </ClInclude>
+    <ClInclude Include="DecoradorAbarrote.h">
+      <Filter>Archivos de encabezado\Carrrito</Filter>
+    </ClInclude>
+    <ClInclude Include="DecoradorConserva.h">
+      <Filter>Archivos de encabezado\Carrrito</Filter>
+    </ClInclude>
+    <ClInclude Include="DecoradorEmbutido.h">
+      <Filter>Archivos de encabezado\Carrrito</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
