@@ -129,7 +129,13 @@
   <ItemGroup>
     <ClCompile Include="Abarrote.cpp" />
     <ClCompile Include="Carne.cpp" />
+    <ClCompile Include="Carrito.cpp" />
+    <ClCompile Include="ComponenteAbstracto.cpp" />
     <ClCompile Include="Conserva.cpp" />
+    <ClCompile Include="DecoradorAbarrote.cpp" />
+    <ClCompile Include="DecoradorAbstracto.cpp" />
+    <ClCompile Include="DecoradorConserva.cpp" />
+    <ClCompile Include="DecoradorEmbutido.cpp" />
     <ClCompile Include="Embutido.cpp" />
     <ClCompile Include="Empaque.cpp" />
     <ClCompile Include="Fecha.cpp" />
@@ -141,7 +147,13 @@
   <ItemGroup>
     <ClInclude Include="Abarrote.h" />
     <ClInclude Include="Carne.h" />
+    <ClInclude Include="Carrito.h" />
+    <ClInclude Include="ComponenteAbstracto.h" />
     <ClInclude Include="Conserva.h" />
+    <ClInclude Include="DecoradorAbarrote.h" />
+    <ClInclude Include="DecoradorAbstracto.h" />
+    <ClInclude Include="DecoradorConserva.h" />
+    <ClInclude Include="DecoradorEmbutido.h" />
     <ClInclude Include="Embutido.h" />
     <ClInclude Include="Empaque.h" />
     <ClInclude Include="Fecha.h" />
