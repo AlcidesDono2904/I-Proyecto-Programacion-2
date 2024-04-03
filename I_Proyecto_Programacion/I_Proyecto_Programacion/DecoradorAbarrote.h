@@ -7,7 +7,7 @@ class DecoradorAbarrote : public DecoradorAbstracto{
 private:
 	Abarrote* abarrote;
 public:
-	DecoradorAbarrote(DecoradorAbstracto* decorar, Abarrote* abarrote);
+	DecoradorAbarrote(ComponenteAbstracto* decorar, Abarrote* abarrote);
 	std::string toString() override;
 	virtual ~DecoradorAbarrote();
 };

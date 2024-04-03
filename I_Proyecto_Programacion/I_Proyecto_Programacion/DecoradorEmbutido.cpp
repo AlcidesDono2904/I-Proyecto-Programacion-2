@@ -1,6 +1,6 @@
 #include "DecoradorEmbutido.h"
 
-DecoradorEmbutido::DecoradorEmbutido(DecoradorAbstracto* dec, Embutido* emb) {
+DecoradorEmbutido::DecoradorEmbutido(ComponenteAbstracto* dec, Embutido* emb) {
 	decorado = dec;
 	embutido = emb;
 }

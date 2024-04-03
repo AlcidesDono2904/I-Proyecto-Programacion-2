@@ -6,7 +6,7 @@ class DecoradorConserva : public DecoradorAbstracto{
 private:
 	Conserva* conserva;
 public:
-	DecoradorConserva(DecoradorAbstracto* decorado, Conserva* conserva);
+	DecoradorConserva(ComponenteAbstracto* decorado, Conserva* conserva);
 	virtual ~DecoradorConserva();
 	std::string toString()override;
 	

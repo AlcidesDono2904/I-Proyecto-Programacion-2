@@ -122,5 +122,8 @@
     <ClInclude Include="DecoradorEmbutido.h">
       <Filter>Archivos de encabezado\Carrrito</Filter>
     </ClInclude>
+    <ClInclude Include="headers.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

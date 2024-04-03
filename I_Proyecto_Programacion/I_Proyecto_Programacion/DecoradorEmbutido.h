@@ -7,7 +7,7 @@ class DecoradorEmbutido :public DecoradorAbstracto{
 private:
 	Embutido* embutido;
 public:
-	DecoradorEmbutido(DecoradorAbstracto* decorado, Embutido* embutido);
+	DecoradorEmbutido(ComponenteAbstracto* decorado, Embutido* embutido);
 	virtual ~DecoradorEmbutido();
 	std::string toString() override;
 

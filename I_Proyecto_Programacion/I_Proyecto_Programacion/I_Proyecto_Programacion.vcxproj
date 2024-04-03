@@ -157,6 +157,7 @@
     <ClInclude Include="Embutido.h" />
     <ClInclude Include="Empaque.h" />
     <ClInclude Include="Fecha.h" />
+    <ClInclude Include="headers.h" />
     <ClInclude Include="Perecedero.h" />
     <ClInclude Include="Producto.h" />
     <ClInclude Include="ProduPerecedero.h" />

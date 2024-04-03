@@ -1,6 +1,6 @@
 #include "DecoradorAbarrote.h"
 
-DecoradorAbarrote::DecoradorAbarrote(DecoradorAbstracto* dec, Abarrote* aba ) {
+DecoradorAbarrote::DecoradorAbarrote(ComponenteAbstracto* dec, Abarrote* aba ) {
 	decorado = dec;
 	abarrote = aba;
 }

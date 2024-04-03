@@ -3,6 +3,8 @@
 #include "ComponenteAbstracto.h"
 class Carrito:public ComponenteAbstracto{
 public:
+	Carrito();
+	virtual ~Carrito();
 	std::string toString()override;
 };
 
