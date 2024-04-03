@@ -1,6 +1,6 @@
 #include "DecoradorConserva.h"
 
-DecoradorConserva::DecoradorConserva(DecoradorAbstracto* dec, Conserva* cons) {
+DecoradorConserva::DecoradorConserva(ComponenteAbstracto* dec, Conserva* cons) {
 	decorado = dec;
 	conserva = cons;
 }
