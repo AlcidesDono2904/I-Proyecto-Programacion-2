@@ -44,8 +44,8 @@ string Abarrote::toString()
 		"\nCategoria: " << categoria <<
 		"\nExistencia: " << existencia <<
 		"\nLimite: " << limite <<
-		"\nFecha de ingreso: " << fechaIngreso <<
+		"\nFecha de ingreso: " << *fechaIngreso <<
 		"\nNombre de la Empresa: " << nombreEmpresa <<
-		"\nFecha de vencimiento: " << ptrPere << endl;
+		"\nFecha de vencimiento: " << *ptrPere << endl;
 	return s.str();
 }

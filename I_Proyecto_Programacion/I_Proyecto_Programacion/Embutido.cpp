@@ -49,11 +49,11 @@ string Embutido::toString()
 		"\nCategoria: " << categoria <<
 		"\nExistencia: " << existencia <<
 		"\nLimite: " << limite <<
-		"\nFecha de ingreso: " << fechaIngreso <<
-		"\nFecha de vencimiento: " << ptrPere <<
+		"\nFecha de ingreso: " << *fechaIngreso <<
+		"\nFecha de vencimiento: " << *ptrPere <<
 		"\nNombre del Animal: " << nombreAnimal <<
 		"\nParte del Animal: " << parteDelAnimal <<
-		"\nMarca: " << marca
-		<< ptrEmpaque << endl;
+		"\nMarca: " << marca << '\n'
+		<< *ptrEmpaque << endl;
 	return s.str();
 }
