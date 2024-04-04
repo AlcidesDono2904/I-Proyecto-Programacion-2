@@ -3,6 +3,7 @@
 #include <ctime>
 #include <string>
 #include <iostream>
+
 class Fecha{
 private:
 	unsigned int dia;

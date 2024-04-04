@@ -8,5 +8,5 @@ DecoradorEmbutido::DecoradorEmbutido(ComponenteAbstracto* dec, Embutido* emb) {
 DecoradorEmbutido::~DecoradorEmbutido() {}
 
 std::string DecoradorEmbutido::toString() {
-	return "Embutido: " + embutido->getDescripcion() + "\n" + decorado->toString();
+	return "Embutido: " + embutido->toString() + "\n" + decorado->toString();
 }

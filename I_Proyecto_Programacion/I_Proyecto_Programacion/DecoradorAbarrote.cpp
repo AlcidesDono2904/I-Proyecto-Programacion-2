@@ -6,7 +6,7 @@ DecoradorAbarrote::DecoradorAbarrote(ComponenteAbstracto* dec, Abarrote* aba ) {
 }
 
 std::string DecoradorAbarrote::toString() {
-	return "Abarrote: " + abarrote->getDescripcion()+ "\n" + decorado->toString();
+	return "Abarrote: " + abarrote->toString() + "\n" + decorado->toString();
 }
 
 DecoradorAbarrote::~DecoradorAbarrote() {}

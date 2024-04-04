@@ -8,5 +8,5 @@ DecoradorConserva::DecoradorConserva(ComponenteAbstracto* dec, Conserva* cons) {
 DecoradorConserva::~DecoradorConserva() {}
 
 std::string DecoradorConserva::toString() {
-	return "Conserva: " + conserva->getDescripcion() + "\n" + decorado->toString();
+	return "Conserva: " + conserva->toString() + "\n" + decorado->toString();
 }
