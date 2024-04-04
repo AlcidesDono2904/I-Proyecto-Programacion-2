@@ -41,7 +41,7 @@ string Conserva::toString()
 		"\nCategoria: " << categoria <<
 		"\nExistencia: " << existencia <<
 		"\nLimite: " << limite <<
-		"\nFecha de ingreso: " << fechaIngreso<<
+		"\nFecha de ingreso: " << *fechaIngreso<<
 		"\nEnvasado: ";
 	if (envasado) s << "Si" << endl;
 	else s << "No " << endl;
