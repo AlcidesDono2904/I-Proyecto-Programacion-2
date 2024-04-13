@@ -1,5 +1,5 @@
 #include "Controladora.h"
-
+/*
 Controladora::Controladora()
 {
 }
@@ -38,4 +38,4 @@ void Controladora::controlReportes()
 
 void Controladora::controlVentas()
 {
-}
+}*/

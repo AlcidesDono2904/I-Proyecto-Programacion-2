@@ -162,6 +162,8 @@
     <ClInclude Include="Fecha.h" />
     <ClInclude Include="headers.h" />
     <ClInclude Include="Interfaz.h" />
+    <ClInclude Include="Lista.h" />
+    <ClInclude Include="Nodo.h" />
     <ClInclude Include="Perecedero.h" />
     <ClInclude Include="Producto.h" />
     <ClInclude Include="ProduPerecedero.h" />
