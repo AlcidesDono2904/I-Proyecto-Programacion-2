@@ -25,6 +25,9 @@
     <Filter Include="Archivos de encabezado\Carrrito">
       <UniqueIdentifier>{4a16d7a6-13e3-4e18-8c61-628f6e04cc92}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\Lista">
+      <UniqueIdentifier>{b8d587f6-cb4e-4cd7-a7d2-cf589d153e89}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Fecha.cpp">
@@ -75,6 +78,15 @@
     <ClCompile Include="Source.cpp">
       <Filter>Archivos de recursos</Filter>
     </ClCompile>
+    <ClCompile Include="Controladora.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Interfaz.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Categoria.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Fecha.h">
@@ -123,6 +135,21 @@
       <Filter>Archivos de encabezado\Carrrito</Filter>
     </ClInclude>
     <ClInclude Include="headers.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Controladora.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Interfaz.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Nodo.h">
+      <Filter>Archivos de encabezado\Lista</Filter>
+    </ClInclude>
+    <ClInclude Include="Lista.h">
+      <Filter>Archivos de encabezado\Lista</Filter>
+    </ClInclude>
+    <ClInclude Include="Categoria.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

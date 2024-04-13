@@ -5,5 +5,6 @@
 #include "DecoradorAbarrote.h"
 #include "DecoradorConserva.h"
 #include "DecoradorEmbutido.h"
+#include "Lista.h"
 
 #endif

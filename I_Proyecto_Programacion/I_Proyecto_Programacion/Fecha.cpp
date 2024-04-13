@@ -3,7 +3,7 @@
 Fecha::Fecha() {//constructor por defecto
     std::time_t tActual = std::time(nullptr);// Obtiene el tiempo actual
 
-    std::tm tLocal;// Estructura de tiempo local
+    std::tm tLocal;
 
     //Con esto se saca la fecha local
     localtime_s(&tLocal, &tActual);
