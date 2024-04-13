@@ -84,6 +84,9 @@
     <ClCompile Include="Interfaz.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="Categoria.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Fecha.h">
@@ -145,6 +148,9 @@
     </ClInclude>
     <ClInclude Include="Lista.h">
       <Filter>Archivos de encabezado\Lista</Filter>
+    </ClInclude>
+    <ClInclude Include="Categoria.h">
+      <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
