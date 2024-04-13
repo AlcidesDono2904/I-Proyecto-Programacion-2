@@ -132,6 +132,7 @@
     <ClCompile Include="Carrito.cpp" />
     <ClCompile Include="ComponenteAbstracto.cpp" />
     <ClCompile Include="Conserva.cpp" />
+    <ClCompile Include="Controladora.cpp" />
     <ClCompile Include="DecoradorAbarrote.cpp" />
     <ClCompile Include="DecoradorAbstracto.cpp" />
     <ClCompile Include="DecoradorConserva.cpp" />
@@ -139,6 +140,7 @@
     <ClCompile Include="Embutido.cpp" />
     <ClCompile Include="Empaque.cpp" />
     <ClCompile Include="Fecha.cpp" />
+    <ClCompile Include="Interfaz.cpp" />
     <ClCompile Include="Perecedero.cpp" />
     <ClCompile Include="Producto.cpp" />
     <ClCompile Include="ProduPerecedero.cpp" />
@@ -150,6 +152,7 @@
     <ClInclude Include="Carrito.h" />
     <ClInclude Include="ComponenteAbstracto.h" />
     <ClInclude Include="Conserva.h" />
+    <ClInclude Include="Controladora.h" />
     <ClInclude Include="DecoradorAbarrote.h" />
     <ClInclude Include="DecoradorAbstracto.h" />
     <ClInclude Include="DecoradorConserva.h" />
@@ -158,6 +161,7 @@
     <ClInclude Include="Empaque.h" />
     <ClInclude Include="Fecha.h" />
     <ClInclude Include="headers.h" />
+    <ClInclude Include="Interfaz.h" />
     <ClInclude Include="Perecedero.h" />
     <ClInclude Include="Producto.h" />
     <ClInclude Include="ProduPerecedero.h" />
