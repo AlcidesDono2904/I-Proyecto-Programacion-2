@@ -7,5 +7,4 @@ public:
 	double porceGanancia(std::string);
 
 };
-
 #endif

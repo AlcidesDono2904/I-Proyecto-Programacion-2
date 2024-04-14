@@ -1,5 +1,5 @@
 #include "Controladora.h"
-/*
+
 Controladora::Controladora()
 {
 }
@@ -20,7 +20,7 @@ void Controladora::control0()
 		case 1: this->controlMantenimiento(); break;
 		case 2: this->controlVentas(); break;
 		case 3: this->controlReportes(); break;
-		case 4: //archivos //salir
+		case 4: break;//archivos //salir
 
 		default:Interfaz::msjError();
 		}
@@ -34,8 +34,9 @@ void Controladora::controlMantenimiento()
 
 void Controladora::controlReportes()
 {
+
 }
 
 void Controladora::controlVentas()
 {
-}*/
+}

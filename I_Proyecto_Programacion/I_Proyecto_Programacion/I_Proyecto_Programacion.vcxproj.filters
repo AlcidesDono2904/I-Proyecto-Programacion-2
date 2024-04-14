@@ -87,6 +87,12 @@
     <ClCompile Include="Categoria.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="Minisuper.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Venta.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Fecha.h">
@@ -134,7 +140,7 @@
     <ClInclude Include="DecoradorEmbutido.h">
       <Filter>Archivos de encabezado\Carrrito</Filter>
     </ClInclude>
-    <ClInclude Include="headers.h">
+    <ClInclude Include="Headers.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="Controladora.h">
@@ -150,6 +156,12 @@
       <Filter>Archivos de encabezado\Lista</Filter>
     </ClInclude>
     <ClInclude Include="Categoria.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Minisuper.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Venta.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
