@@ -1,7 +1,7 @@
 #pragma once
 #include "headers.h"
 #include "Interfaz.h"
-/*
+
 class Controladora {
 
 public:
@@ -11,4 +11,4 @@ public:
 	void controlMantenimiento();
 	void controlReportes();
 	void controlVentas();
-};*/
+};

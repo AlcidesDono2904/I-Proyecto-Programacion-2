@@ -3,7 +3,7 @@
 * Alcides Jiménez Carrillo - 4-0267-0686
 * Laura Flores Barrantes - 119050003
 */
-#include "headers.h"
+#include "Headers.h"
 
 
 int main() {

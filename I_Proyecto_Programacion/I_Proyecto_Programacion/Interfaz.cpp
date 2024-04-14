@@ -1,5 +1,9 @@
 #include "Interfaz.h"
 
+void Interfaz::msjError() {
+	cout<<"Error..."<<endl;
+}
+
 int Interfaz::MenuPrincipal()
 {
 	int opcion = 0;
@@ -25,8 +29,6 @@ int Interfaz::MenuMantenimiento()
 void Interfaz::VentaGeneraFactura()
 {
 }
-
-
 
 int Interfaz::MenuReportes()
 {

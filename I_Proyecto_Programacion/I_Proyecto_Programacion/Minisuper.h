@@ -10,5 +10,5 @@ public:
 	virtual ~Minisuper();
 	ListaEnlazada<Producto>* getProductos();
 	ListaEnlazada<Venta>* getVentas();
-
+	
 };

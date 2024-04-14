@@ -8,10 +8,8 @@ Minisuper::Minisuper()
 
 Minisuper::~Minisuper()
 {
-    if (!productos->estaVacio())
-        delete productos;
-    if (!ventas->estaVacio())
-        delete ventas;
+    if (productos != nullptr) delete productos;
+    if (ventas!=nullptr) delete ventas;
 }
 
 ListaEnlazada<Producto>* Minisuper::getProductos()
