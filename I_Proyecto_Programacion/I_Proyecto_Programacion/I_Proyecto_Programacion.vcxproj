@@ -142,10 +142,12 @@
     <ClCompile Include="Empaque.cpp" />
     <ClCompile Include="Fecha.cpp" />
     <ClCompile Include="Interfaz.cpp" />
+    <ClCompile Include="Minisuper.cpp" />
     <ClCompile Include="Perecedero.cpp" />
     <ClCompile Include="Producto.cpp" />
     <ClCompile Include="ProduPerecedero.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Venta.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Abarrote.h" />
@@ -165,10 +167,12 @@
     <ClInclude Include="headers.h" />
     <ClInclude Include="Interfaz.h" />
     <ClInclude Include="Lista.h" />
+    <ClInclude Include="Minisuper.h" />
     <ClInclude Include="Nodo.h" />
     <ClInclude Include="Perecedero.h" />
     <ClInclude Include="Producto.h" />
     <ClInclude Include="ProduPerecedero.h" />
+    <ClInclude Include="Venta.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

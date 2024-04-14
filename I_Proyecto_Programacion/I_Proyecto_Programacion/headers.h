@@ -6,5 +6,6 @@
 #include "DecoradorConserva.h"
 #include "DecoradorEmbutido.h"
 #include "Lista.h"
+#include "Venta.h"
 
 #endif
