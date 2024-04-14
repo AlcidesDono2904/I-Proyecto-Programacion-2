@@ -5,7 +5,6 @@
 #include "DecoradorAbarrote.h"
 #include "DecoradorConserva.h"
 #include "DecoradorEmbutido.h"
-#include "Lista.h"
-#include "Venta.h"
+#include "Minisuper.h"
 
 #endif

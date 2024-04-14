@@ -1,18 +1,17 @@
 #include "Venta.h"
 
-Venta::Venta():carrito(nullptr), numeroFat(0), cantidadProductos(0), descripcion(""), importe(0), IVA(0), subtotal(0), cedulaCliente("")
+Venta::Venta():carrito(nullptr), numeroFat(0), cantidadProductos(0), importe(0), IVA(0), subtotal(0), cedulaCliente("")
 {
 }
 
-Venta::Venta(ListaEnlazada<ComponenteAbstracto>* carri, int numFac, int cantProd, string descp, double imp, double iva, double subto, string cedulaCli)
-:carrito(carri), numeroFat(numFac), cantidadProductos(cantProd), descripcion(descp), importe(imp), IVA(iva), subtotal(subto), cedulaCliente(cedulaCli)
+Venta::Venta(ListaEnlazada<ComponenteAbstracto>* carri, int numFac, int cantProd, double imp, double iva, double subto, string cedulaCli)
+:carrito(carri), numeroFat(numFac), cantidadProductos(cantProd), importe(imp), IVA(iva), subtotal(subto), cedulaCliente(cedulaCli)
 {
 }
 
 Venta::~Venta()
 {
-    if (!carrito->estaVacio())
-        delete carrito;
+    if (carrito == nullptr) delete carrito; 
 }
 
 ListaEnlazada<ComponenteAbstracto>* Venta::getCarrito()
@@ -23,11 +22,6 @@ ListaEnlazada<ComponenteAbstracto>* Venta::getCarrito()
 int Venta::getNumeroFact()
 {
     return numeroFat;
-}
-
-string Venta::getDescripcion()
-{
-    return descripcion;
 }
 
 string Venta::getCedulaCliente()
@@ -65,11 +59,6 @@ void Venta::setCantidadProductos(int cantProd)
     cantidadProductos = cantProd;
 }
 
-void Venta::setDescripcion(string descp)
-{
-    descripcion = descp;
-}
-
 void Venta::setCedulaCliente(string cedulaCli)
 {
     cedulaCliente = cedulaCli;
@@ -95,7 +84,6 @@ string Venta::toString() const
     stringstream s;
     s << "Numero de factura: " << numeroFat << endl
         << "Cantidad de productos: " << cantidadProductos << endl
-        << "Descripcion: " << descripcion << endl
         << "Importe: " << importe << endl
         << "IVA: " << IVA << endl
         << "Subtotal: " << subtotal << endl;

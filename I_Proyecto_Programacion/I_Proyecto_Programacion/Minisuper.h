@@ -1,5 +1,8 @@
-#pragma once
-#include "headers.h"
+#ifndef MINISUPER_H
+#define MINISUPER_H
+#include "Producto.h"
+#include "Venta.h"
+#include "Lista.h"
 
 class Minisuper {
 private:
@@ -10,5 +13,9 @@ public:
 	virtual ~Minisuper();
 	ListaEnlazada<Producto>* getProductos();
 	ListaEnlazada<Venta>* getVentas();
+	void ingresarProducto(Producto* producto);
+	Producto* eliminarProducto(string codigo);
+	//void modificarProducto(string codigo, Producto* producto);
 	
 };
+#endif
