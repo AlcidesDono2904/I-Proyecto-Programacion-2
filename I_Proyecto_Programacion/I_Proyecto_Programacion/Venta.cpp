@@ -4,9 +4,11 @@ Venta::Venta():carrito(nullptr), numeroFat(0), cantidadProductos(0), importe(0),
 {
 }
 
-Venta::Venta(ListaEnlazada<ComponenteAbstracto>* carri, int numFac, int cantProd, double imp, double iva, double subto, string cedulaCli)
-:carrito(carri), numeroFat(numFac), cantidadProductos(cantProd), importe(imp), IVA(iva), subtotal(subto), cedulaCliente(cedulaCli)
+Venta::Venta(ComponenteAbstracto* carri, int numFac, int cantProd, string cedulaCli)
+:carrito(carri), numeroFat(numFac), cantidadProductos(cantProd), cedulaCliente(cedulaCli)
 {
+    subtotal = dynamic_cast<Producto*>(carrito)->getPrecioCosto();
+    importe = subtotal * 0.13 + subtotal;
 }
 
 Venta::~Venta()
@@ -14,7 +16,7 @@ Venta::~Venta()
     if (carrito == nullptr) delete carrito; 
 }
 
-ListaEnlazada<ComponenteAbstracto>* Venta::getCarrito()
+ComponenteAbstracto* Venta::getCarrito()
 {
     return carrito;
 }
@@ -44,7 +46,8 @@ double Venta::getSubtotal()
     return subtotal;
 }
 
-void Venta::setCarrito(ListaEnlazada<ComponenteAbstracto>* carri)
+
+void Venta::setCarrito(ComponenteAbstracto* carri)
 {
     carrito = carri;
 }
@@ -86,9 +89,10 @@ string Venta::toString() const
         << "Cantidad de productos: " << cantidadProductos << endl
         << "Importe: " << importe << endl
         << "IVA: " << IVA << endl
-        << "Subtotal: " << subtotal << endl;
+        << "Subtotal: " << subtotal << endl
+        << "Total: " << total << endl;
     s << "Carrito: " << endl;
-    if (!carrito->estaVacio())
-        s << carrito->sacarDato(1)->toString();
+    if (carrito!=nullptr)
+        s << carrito->toString();
     return s.str();
 }

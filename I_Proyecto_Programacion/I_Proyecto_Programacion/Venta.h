@@ -1,29 +1,31 @@
 #pragma once
 #include "Lista.h"
 #include "ComponenteAbstracto.h"
+#include "headers.h"
 #include <string>
 #include <sstream>
 using namespace std;
 class Venta {
 private:
-	ListaEnlazada<ComponenteAbstracto>* carrito;
+	ComponenteAbstracto* carrito;
 	int numeroFat;
 	int cantidadProductos;
 	double importe;
 	double IVA;
 	double subtotal;
+	double total;
 	string cedulaCliente;
 public:
 	Venta();
-	Venta(ListaEnlazada<ComponenteAbstracto>* carrito, int numFac, int cantProd, double imp, double iva, double subto, string cedulaCli);
+	Venta(ComponenteAbstracto* carrito, int numFac, int cantProd, string cedulaCli);
 	virtual ~Venta();
-	ListaEnlazada<ComponenteAbstracto>* getCarrito();
+	ComponenteAbstracto* getCarrito();
 	int getNumeroFact();
 	string getCedulaCliente();
 	double getImporte();
 	double getIVA();
 	double getSubtotal();
-	void setCarrito(ListaEnlazada<ComponenteAbstracto>* carrito);
+	void setCarrito(ComponenteAbstracto* carrito);
 	void setNumFact(int numFac);
 	void setCantidadProductos(int cantProd);
 	void setCedulaCliente(string cedulaCli);
@@ -31,4 +33,5 @@ public:
 	void setIVA(double iva);
 	void setSubtotal(double subto);
 	string toString() const;
+	
 };

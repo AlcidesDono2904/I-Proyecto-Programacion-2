@@ -26,5 +26,7 @@ public:
 	//reporte ventas
 	std::string reportarVentas(std::string cedula);
 	//reportar 5 mejores cedulas
+	void insertarVentaOrdenada(ListaEnlazada<Venta>* ventasOrden, Venta* venta);
+	string mejoresCincoClientes();
 };
 #endif

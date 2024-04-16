@@ -88,3 +88,39 @@ std::string Minisuper::reportarVentas(std::string cedula) {
 	}
 	return ss.str();
 }
+
+void Minisuper::insertarVentaOrdenada(ListaEnlazada<Venta>* ventasOrden, Venta* venta)
+{
+    if (ventasOrden->estaVacio() || ventasOrden->inicio()->getImporte() < venta->getImporte()) {
+        ventasOrden->agregarInicio(venta);
+    }
+    else{ 
+        Nodo<Venta>* ptr = ventasOrden->getPrimero();
+        while (ptr->getSig() != nullptr && ptr->getSig()->getDato()->getImporte() > venta->getImporte()) {
+            ptr = ptr->getSig();
+        }
+        Nodo<Venta>* nuevo = new Nodo<Venta>(venta);
+        nuevo->setSig(ptr->getSig());
+        ptr->setSig(nuevo);
+    }
+}
+
+string Minisuper::mejoresCincoClientes()
+{
+    stringstream s;
+   
+    if(ventas->estaVacio()) return "No hay ventas\n";
+    ListaEnlazada<Venta>* ventasOrden = new ListaEnlazada<Venta>();
+    for (int i = 0; i < ventas->cantidad(); i++) {
+        Venta* ptrA = ventas->obtener(i);
+        insertarVentaOrdenada(ventasOrden, ptrA);
+    }
+    s << "Los mejores 5 clientes son: " << endl;
+    for (int i = 0; i < ventas->cantidad() || i< 5; i++) {
+        s << ventasOrden->obtener(i)->getCedulaCliente() << "con un importe de " << ventasOrden->obtener(i)->getImporte() << endl;
+        s << "------------------" << endl;
+    }
+
+    delete ventasOrden;
+    return s.str();
+}

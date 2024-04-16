@@ -18,6 +18,7 @@ public:
 	T* sacarDato(unsigned int posicion=0);//Por defecto saca el primer dato
 	T* inicio();
 	T* final();
+	Nodo<T>* getPrimero();
 };
 
 template<class T>
@@ -139,6 +140,12 @@ T* ListaEnlazada<T>::final() {
 		aux = aux->getSig();
 	}
 	return aux->getDato();
+}
+
+template<class T>
+inline Nodo<T>* ListaEnlazada<T>::getPrimero()
+{
+	return primero;
 }
 
 #endif
