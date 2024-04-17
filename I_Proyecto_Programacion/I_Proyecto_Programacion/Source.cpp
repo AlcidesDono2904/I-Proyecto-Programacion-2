@@ -11,9 +11,14 @@ int main() {
 	Abarrote* ab = new Abarrote("code1", "Abarrote", "Descripcion Abarrote", 40.5, "02", 4, 10, 0, 14.5, 10, 7, 2024, "empresa...");
 
 	Embutido* em = new Embutido("code2", "Embutido", "Descripcion Embutido", 40.5, "03", 4, 10, 0, 14.5, 10, 7, 2024,
-		"nombreEEmpresa", "pig", "mjm", "marca? la hora", 1);
+		 "pig", "mjm", "marca? la hora", 1);
 	
 	Conserva* co = new Conserva("code3", "Conserva", "Descripcion Conserva", 40.5, "01", 4, 10, 0);
+
+	/*  Embutido(string codigo, string nombre, string descripcion, double precio,string categoria,
+        int existencia, int limite, bool nacional, double peso,
+        int dia, int mes, int anio, string nombreDelAnimal,
+        string parteDelAnimal, string marca, bool tripa);*/
 	/*
 	ComponenteAbstracto* carrito1 = new Carrito();
 	ComponenteAbstracto* paraBorrar = carrito1;
