@@ -10,6 +10,11 @@ Perecedero::Perecedero(int dia, int mes, int anio)
 	vencimiento = new Fecha(dia, mes, anio);
 }
 
+Fecha* Perecedero::getVencimiento()
+{
+	return vencimiento;
+}
+
 Perecedero::~Perecedero()
 {
 }

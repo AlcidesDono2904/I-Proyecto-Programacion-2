@@ -49,3 +49,8 @@ string Abarrote::toString()
 		"\nFecha de vencimiento: " << *ptrPere << endl;
 	return s.str();
 }
+
+Producto* Abarrote::clonar()
+{
+	return new Abarrote(codigo, nombreComercial, descripcion, precioCosto, categoria, existencia,limite, nacional, peso, fechaIngreso->getDia(), fechaIngreso->getMes(), fechaIngreso->getAnio(), nombreEmpresa );
+}

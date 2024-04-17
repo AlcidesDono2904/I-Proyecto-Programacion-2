@@ -10,6 +10,7 @@ public:
 	DecoradorAbarrote(ComponenteAbstracto* decorar, Abarrote* abarrote);
 	std::string toString() override;
 	virtual ~DecoradorAbarrote();
+	virtual ComponenteAbstracto* clonar();
 };
 
 #endif

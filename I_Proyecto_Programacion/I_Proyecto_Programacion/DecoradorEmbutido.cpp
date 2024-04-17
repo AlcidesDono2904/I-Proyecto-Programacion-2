@@ -10,3 +10,8 @@ DecoradorEmbutido::~DecoradorEmbutido() {}
 std::string DecoradorEmbutido::toString() {
 	return "Embutido: " + embutido->toString() + "\n" + decorado->toString();
 }
+
+ComponenteAbstracto* DecoradorEmbutido::clonar()
+{
+	return new DecoradorEmbutido(decorado, embutido);
+}

@@ -10,7 +10,7 @@ public:
 	DecoradorEmbutido(ComponenteAbstracto* decorado, Embutido* embutido);
 	virtual ~DecoradorEmbutido();
 	std::string toString() override;
-
+	virtual ComponenteAbstracto* clonar();
 };
 
 #endif 

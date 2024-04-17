@@ -89,17 +89,18 @@ std::string Minisuper::reportarVentas(std::string cedula) {
 	return ss.str();
 }
 
-void Minisuper::insertarVentaOrdenada(ListaEnlazada<Venta>* ventasOrden, Venta* venta)
+void Minisuper::insertarVentaOrdenada(ListaEnlazada<Venta>* ventasOrden, const Venta* venta)
 {
-    if (ventasOrden->estaVacio() || ventasOrden->inicio()->getImporte() < venta->getImporte()) {
-        ventasOrden->agregarInicio(venta);
+    Venta* ventaCopia = new Venta(*venta);
+    if (ventasOrden->estaVacio() || ventasOrden->inicio()->getImporte() < ventaCopia->getImporte()) {
+        ventasOrden->agregarInicio(ventaCopia);
     }
     else{ 
         Nodo<Venta>* ptr = ventasOrden->getPrimero();
-        while (ptr->getSig() != nullptr && ptr->getSig()->getDato()->getImporte() > venta->getImporte()) {
+        while (ptr->getSig() != nullptr && ptr->getSig()->getDato()->getImporte() > ventaCopia->getImporte()) {
             ptr = ptr->getSig();
         }
-        Nodo<Venta>* nuevo = new Nodo<Venta>(venta);
+        Nodo<Venta>* nuevo = new Nodo<Venta>(ventaCopia);
         nuevo->setSig(ptr->getSig());
         ptr->setSig(nuevo);
     }
@@ -123,4 +124,20 @@ string Minisuper::mejoresCincoClientes()
 
     delete ventasOrden;
     return s.str();
+}
+
+Producto* Minisuper::getProductoPorCodigo(string cod)
+{
+    if (productos->estaVacio()) return nullptr;
+
+    for (unsigned int i = 0; i < productos->cantidad(); i++) {
+        if (productos->obtener(i)->getCodigo() == cod)
+            return productos->obtener(i);
+    }
+    return nullptr;
+}
+
+void Minisuper::ingresarVenta(Venta* venta)
+{
+    ventas->agregarInicio(venta);
 }

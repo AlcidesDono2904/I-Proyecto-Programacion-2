@@ -10,3 +10,8 @@ std::string DecoradorAbarrote::toString() {
 }
 
 DecoradorAbarrote::~DecoradorAbarrote() {}
+
+ComponenteAbstracto* DecoradorAbarrote::clonar()
+{
+	return new DecoradorAbarrote(decorado, abarrote);
+}

@@ -12,6 +12,7 @@ protected:
 public:
 	Perecedero(Fecha* vencimiento);
 	Perecedero(int dia, int mes, int anio);
+	Fecha* getVencimiento();
 	virtual ~Perecedero();
 	virtual string toString();
 

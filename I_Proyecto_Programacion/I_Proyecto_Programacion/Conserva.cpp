@@ -47,3 +47,8 @@ string Conserva::toString()
 	else s << "No " << endl;
 	return s.str();
 }
+
+Producto* Conserva::clonar()
+{
+	return new Conserva(codigo, nombreComercial, descripcion, precioCosto, categoria, existencia, limite, envasado);
+}

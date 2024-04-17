@@ -8,7 +8,7 @@ public:
 	static void msjError();
 	static int MenuPrincipal();
 	static int MenuMantenimiento();
-	static void VentaGeneraFactura();
+	static void VentaGeneraFactura(Minisuper* mini);
 	static int MenuReportes();
 
 };

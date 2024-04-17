@@ -6,6 +6,7 @@ public:
 	Carrito();
 	virtual ~Carrito();
 	std::string toString()override;
+	virtual ComponenteAbstracto* clonar();
 };
 
 #endif

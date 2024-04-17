@@ -9,6 +9,8 @@ public:
 	DecoradorConserva(ComponenteAbstracto* decorado, Conserva* conserva);
 	virtual ~DecoradorConserva();
 	std::string toString()override;
+
+	virtual ComponenteAbstracto* clonar();
 	
 };
 

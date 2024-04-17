@@ -8,6 +8,7 @@ protected:
 	ComponenteAbstracto* decorado;
 public:
 	virtual ~DecoradorAbstracto();
+	virtual ComponenteAbstracto* clonar() = 0;
 };
 
 #endif 

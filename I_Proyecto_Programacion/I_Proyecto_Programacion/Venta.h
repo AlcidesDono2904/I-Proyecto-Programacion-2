@@ -18,6 +18,7 @@ private:
 public:
 	Venta();
 	Venta(ComponenteAbstracto* carrito, int numFac, int cantProd, string cedulaCli);
+	Venta(const Venta&);
 	virtual ~Venta();
 	ComponenteAbstracto* getCarrito();
 	int getNumeroFact();

@@ -12,5 +12,6 @@ public:
 	void setNombreEmpresa(string nombreEmpresa);
 	string getNombreEmpresa();
 	string toString();
+	virtual Producto* clonar();
 };
 

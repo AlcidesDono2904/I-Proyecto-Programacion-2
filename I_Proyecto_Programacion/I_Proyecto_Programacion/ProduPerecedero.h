@@ -17,5 +17,6 @@ public:
 	bool getNacional();
 	double getPeso();
 	virtual string toString() = 0;
+	virtual Producto* clonar() = 0;
 };
 

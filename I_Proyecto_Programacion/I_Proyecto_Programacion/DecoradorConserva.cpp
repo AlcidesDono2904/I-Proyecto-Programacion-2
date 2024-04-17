@@ -10,3 +10,8 @@ DecoradorConserva::~DecoradorConserva() {}
 std::string DecoradorConserva::toString() {
 	return "Conserva: " + conserva->toString() + "\n" + decorado->toString();
 }
+
+ComponenteAbstracto* DecoradorConserva::clonar()
+{
+	return new DecoradorConserva(decorado, conserva);
+}

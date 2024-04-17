@@ -5,7 +5,7 @@ Embutido::Embutido():Carne(), marca(""), ptrEmpaque(NULL)
 }
 
 
-Embutido::Embutido(string codigo, string nombre, string descripcion, double precio, string categoria, int existencia, int limite, bool nacional, double peso, int dia, int mes, int anio, string nombreEmpresa, string nombreDelAnimal, string parteDelAnimal, string marca, bool tripa)
+Embutido::Embutido(string codigo, string nombre, string descripcion, double precio, string categoria, int existencia, int limite, bool nacional, double peso, int dia, int mes, int anio, string nombreDelAnimal, string parteDelAnimal, string marca, bool tripa)
 {
 	this->codigo = codigo;
 	this->nombreComercial = nombre;
@@ -56,4 +56,9 @@ string Embutido::toString()
 		"\nMarca: " << marca << '\n'
 		<< *ptrEmpaque << endl;
 	return s.str();
+}
+
+Producto* Embutido::clonar()
+{
+	return new Embutido(codigo, nombreComercial, descripcion, precioCosto, categoria, existencia, limite, nacional, peso, ptrPere->getVencimiento()->getDia(), ptrPere->getVencimiento()->getMes(), ptrPere->getVencimiento()->getAnio(), nombreAnimal, parteDelAnimal, marca, ptrEmpaque->getTripa());
 }

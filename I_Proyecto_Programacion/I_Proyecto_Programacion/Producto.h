@@ -36,5 +36,6 @@ class Producto{
 		Fecha* getFechaIngreso();
 		void setFechaIngreso(Fecha*);
 		virtual std::string toString();
+		virtual Producto* clonar() = 0;
 };
 #endif

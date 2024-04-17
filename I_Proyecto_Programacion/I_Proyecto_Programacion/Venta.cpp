@@ -11,6 +11,21 @@ Venta::Venta(ComponenteAbstracto* carri, int numFac, int cantProd, string cedula
     importe = subtotal * 0.13 + subtotal;
 }
 
+Venta::Venta(const Venta& otra)
+{
+    this->numeroFat = otra.numeroFat;
+    this->cantidadProductos = otra.cantidadProductos;
+    this->importe = otra.importe;
+    this->IVA = otra.IVA;
+    this->subtotal = otra.subtotal;
+    this->total = otra.total;
+    this->cedulaCliente = otra.cedulaCliente;
+    if (this->carrito != nullptr)
+        this->carrito = otra.carrito->clonar();
+    else
+        this->carrito = nullptr;
+}
+
 Venta::~Venta()
 {
     if (carrito == nullptr) delete carrito; 

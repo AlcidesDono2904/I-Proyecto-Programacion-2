@@ -16,5 +16,6 @@ public:
 	void setEnvasado(bool envasado);
 	bool getEnvasado();
 	virtual string toString();
+	virtual Producto* clonar();
 };
 
