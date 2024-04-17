@@ -36,8 +36,6 @@ Producto* Minisuper::eliminarProducto(string codigo) {//Recibe codigo como codig
     throw "Error: no se encontro el producto\n";
 }
 
-//void modificar
-
 std::string Minisuper::reportarProductos() {
     if (productos->estaVacio()) return "No hay productos\n";
 	std::stringstream ss;
@@ -64,13 +62,21 @@ std::string Minisuper::reportarCategoria(std::string categoria) {
 	return ss.str();
 }
 
-//reportarDebajoExistencia
-/*
-std::string Minisuper::generarVenta(Venta* venta, std::string cedula) {//lo hago otro dia
-    return "";
-}*/
+std::string Minisuper::reportarDebajoExistencia() {
+    if(ventas->estaVacio()) return "No hay productos\n";
+    std::stringstream ss;
+    ss << "";
+    for (unsigned int i = 0; i < productos->cantidad(); i++) {
+		if (productos->obtener(i)->getExistencia() < productos->obtener(i)->getLimite()) {
+			ss << "====================\n";
+			ss << productos->obtener(i)->toString() << '\n';
+		}
+	}
+    if (ss.str()=="") return "No hay productos por debajo de su existencia\n";
+    return ss.str();
+}
 
-std::string Minisuper::reportarVentas(std::string cedula) {
+std::string Minisuper::reportarVentas(std::string cedula) {//El metodo fue hecho antes de crear el de buscar...
     if (ventas->estaVacio()) return "No hay ventas\n";
 
     bool noExiste = false;
@@ -112,12 +118,12 @@ string Minisuper::mejoresCincoClientes()
    
     if(ventas->estaVacio()) return "No hay ventas\n";
     ListaEnlazada<Venta>* ventasOrden = new ListaEnlazada<Venta>();
-    for (int i = 0; i < ventas->cantidad(); i++) {
+    for (unsigned int i = 0; i < ventas->cantidad(); i++) {
         Venta* ptrA = ventas->obtener(i);
         insertarVentaOrdenada(ventasOrden, ptrA);
     }
     s << "Los mejores 5 clientes son: " << endl;
-    for (int i = 0; i < ventas->cantidad() || i< 5; i++) {
+    for (unsigned int i = 0; i < ventas->cantidad() || i< 5; i++) {
         s << ventasOrden->obtener(i)->getCedulaCliente() << "con un importe de " << ventasOrden->obtener(i)->getImporte() << endl;
         s << "------------------" << endl;
     }
@@ -131,7 +137,7 @@ Producto* Minisuper::getProductoPorCodigo(string cod)
     if (productos->estaVacio()) return nullptr;
 
     for (unsigned int i = 0; i < productos->cantidad(); i++) {
-        if (productos->obtener(i)->getCodigo() == cod)
+        if (productos->obtener(i)->getCodigo() == cod )
             return productos->obtener(i);
     }
     return nullptr;
@@ -140,4 +146,14 @@ Producto* Minisuper::getProductoPorCodigo(string cod)
 void Minisuper::ingresarVenta(Venta* venta)
 {
     ventas->agregarInicio(venta);
+}
+
+Producto* Minisuper::buscarProducto(string codigo) {
+    if (productos->estaVacio()) throw "Error: la lista esta vacia";
+    for (unsigned int i = 0; i < productos->cantidad(); i++) {
+        if (productos->obtener(i)->getCodigo() == codigo or productos->obtener(i)->getNombreComercial() == codigo) {
+            return productos->obtener(i);
+        }
+    }
+    throw "Error: codigo/nombre incorrecto o el producto no existe";
 }

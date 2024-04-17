@@ -28,7 +28,7 @@ Venta::Venta(const Venta& otra)
 
 Venta::~Venta()
 {
-    if (carrito == nullptr) delete carrito; 
+    if (carrito != nullptr) delete carrito; 
 }
 
 ComponenteAbstracto* Venta::getCarrito()

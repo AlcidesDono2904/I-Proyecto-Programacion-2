@@ -1,7 +1,7 @@
 #pragma once
 #include "Lista.h"
 #include "ComponenteAbstracto.h"
-#include "headers.h"
+#include "Producto.h"
 #include <string>
 #include <sstream>
 using namespace std;

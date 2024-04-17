@@ -16,21 +16,20 @@ public:
 	//mantenimiento productos
 	void ingresarProducto(Producto* producto);
 	Producto* eliminarProducto(string codigo);
-	//void modificarProducto(string codigo, Producto* producto);
+	
 	//reporte productos
 	std::string reportarProductos();
 	std::string reportarCategoria(std::string categoria);
-	//std::string reportarDebajoExistencia(); ??
+	std::string reportarDebajoExistencia(); 
 	//mantenimiento ventas
-	//std::string generarVenta(Venta* venta,std::string cedula);
+	
 	//reporte ventas
 	std::string reportarVentas(std::string cedula);
-	//reportar 5 mejores cedulas
-
 
 	void insertarVentaOrdenada(ListaEnlazada<Venta>* ventasOrden, const Venta* venta);
 	string mejoresCincoClientes();
 	Producto* getProductoPorCodigo(string cod);
 	void ingresarVenta(Venta* venta);
+	Producto* buscarProducto(string codigo);
 };
 #endif
