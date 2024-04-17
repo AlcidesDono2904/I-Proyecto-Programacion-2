@@ -75,7 +75,7 @@ void Interfaz::VentaGeneraFactura(Minisuper* mini)
 						{
 							break;
 						}
-						}
+					}
 
 						//Modificar lista productos
 						mini->getProductoPorCodigo(cod)->setExistencia(produ->getExistencia() - cant);

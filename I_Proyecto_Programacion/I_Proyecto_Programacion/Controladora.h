@@ -1,9 +1,9 @@
 #pragma once
-#include "headers.h"
+#include "Headers.h"
 #include "Interfaz.h"
 
 class Controladora {
-
+	Minisuper* super;
 public:
 	Controladora();
 	~Controladora();
