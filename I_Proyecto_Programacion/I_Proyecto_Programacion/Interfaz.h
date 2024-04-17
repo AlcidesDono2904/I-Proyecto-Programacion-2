@@ -1,5 +1,5 @@
 #pragma once
-#include "headers.h"
+#include "Headers.h"
 #include <iostream>
 #include <sstream>
 
@@ -10,5 +10,4 @@ public:
 	static int MenuMantenimiento();
 	static void VentaGeneraFactura(Minisuper* mini);
 	static int MenuReportes();
-
 };
