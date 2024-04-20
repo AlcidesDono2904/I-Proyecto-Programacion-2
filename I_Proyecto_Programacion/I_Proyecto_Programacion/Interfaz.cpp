@@ -35,6 +35,7 @@ void Interfaz::VentaGeneraFactura(Minisuper* mini)
 	Producto* produ = nullptr;
 	ComponenteAbstracto* carrito = new Carrito();
 	ComponenteAbstracto* productoC;
+	
 	if (!mini->getProductos()->estaVacio()) {
 		cout << "----Ingrese su cedula para emitir la factura----" << endl;
 		cin >> ced;
@@ -97,7 +98,7 @@ void Interfaz::VentaGeneraFactura(Minisuper* mini)
 		} while (seguir != 0);
 		if (sePudo) {
 			// Hacer venta y mostrar factura
-			Venta* ventaC = new Venta(carrito, 0, cantProdu, ced);
+			Venta* ventaC = new Venta(carrito, 0, cantProdu, ced); //multiplicar el precio por la cantidad de productos
 			mini->ingresarVenta(ventaC);
 			cout << "Aqui esta su factura: " << endl
 				<< ventaC->toString() << endl;
@@ -119,4 +120,177 @@ int Interfaz::MenuReportes()
 	cout << "6)Retornar" << endl;
 	cin >> opcion;
 	return opcion;
+}
+
+void Interfaz::mostrarPorCategoria(Minisuper* mini)
+{
+	string categ = "";
+	cin >> categ;
+	cout << mini->reportarCategoria(categ);
+}
+
+void Interfaz::mostrarVentasPorCedula(Minisuper* mini)
+{
+	string ced = "";
+	cin >> ced;
+	cout << mini->reportarVentas(ced);
+	
+}
+
+void Interfaz::ingresarProducto(Minisuper* mini)
+{
+	int op;
+	Producto* produ = nullptr;
+	string codigo, nombre, descripcion, parteDelAnimal, marca, nombreDelAnimal, nombreEmpresa;
+	double precio, peso;
+	int existencia, limite, dia, mes, anio;
+	bool nacional, tripa, envasado;
+	cout << "El producto que desea ingresar es tipo:" << endl
+		<< "1)Conserva" << endl
+		<< "2)Abarrote" << endl
+		<< "3)Embutido" << endl
+		<< "4)Desea retornar" << endl;
+	cin >> op;
+	system("cls");
+
+	cout << "Codigo: " << endl;
+	cin >> codigo;
+	cout << "Nombre del producto: " << endl;
+	cin >> nombre;
+	cout << "Descripcion del producto: " << endl;
+	getline(cin, descripcion);
+	cout << "Precio: " << endl;
+	cin >> precio;
+	cout << "Cuantos productos va a ingresar: " << endl;
+	cin >> existencia;
+	cout << "Cual es el limite de productos: " << endl;
+	cin >> limite;
+	
+
+	switch (op)
+	{
+	case 1: {
+		cout << "Es envasado: si(1), no(0)" << endl;
+		cin >> envasado;
+		produ = new Conserva(codigo, nombre, descripcion, precio, "01", existencia, limite, envasado);
+		mini->ingresarProducto(produ);
+		cout << "Producto ingresado!" << endl;
+		system("pause");
+		break;
+	}
+	case 2: {
+		cout << "Es nacional, si(1), no(0) " << endl;
+		cin >> nacional;
+		cout << "Cuanto pesa: " << endl;
+		cin >> peso;
+		cout << "Fecha de vencimiento: " << endl << "Dia: " << endl;
+		cin >> dia;
+		cout << "Mes: " << endl;
+		cin >> mes;
+		cout << "Anio: " << endl;
+		cin >> anio;
+		cout << "Nombre de la empresa: " << endl;
+		cin >> nombreEmpresa;
+
+		produ = new Abarrote(codigo, nombre, descripcion, precio, "02", existencia, limite, nacional, peso, dia, mes, anio, nombreEmpresa);
+		mini->ingresarProducto(produ);
+		cout << "Producto ingresado!" << endl;
+		system("pause");
+		break;
+	}
+	case 3: {
+		cout << "Es nacional, si(1), no(0) " << endl;
+		cin >> nacional;
+		cout << "Cuanto pesa: " << endl;
+		cin >> peso;
+		cout << "Fecha de vencimiento: " << endl << "Dia: " << endl;
+		cin >> dia;
+		cout << "Mes: " << endl;
+		cin >> mes;
+		cout << "Anio: " << endl;
+		cin >> anio;
+		cout << "Nombre del Animal: " << endl;
+		cin >> nombreDelAnimal; 
+		cout << "Marca: " << endl;
+		cin >> marca;
+		cout << "Es tripa: " << endl;
+		cin >> tripa;
+		produ = new Embutido(codigo, nombre, descripcion, precio, "03", existencia, limite, nacional, peso, dia, mes, anio, nombreDelAnimal, parteDelAnimal, marca, tripa);
+		mini->ingresarProducto(produ);
+		cout << "Producto ingresado!" << endl;
+		system("pause");
+		break;
+	}
+	default:
+		break;
+	}
+
+}
+
+void Interfaz::eliminarProducto(Minisuper* mini)
+{
+	string codigo;
+	cout << mini->reportarProductos() << endl;
+	cout << "Ingrese el codigo del producto que desea eliminar: " << endl;
+	cin >> codigo;
+
+	if (mini->getProductoPorCodigo(codigo) == nullptr)
+		throw "No existe producto con ese codigo";
+	else {
+		mini->eliminarProducto(codigo);
+		cout << "Producto eliminado!" << endl;
+		system("pause");
+	}
+}
+
+void Interfaz::modificarProducto(Minisuper* mini)
+{
+	string codigo, descrp;
+	int op, cant;
+	double precio;
+	
+	cout << mini->reportarProductos() << endl;
+	cout << "Ingrese el codigo del producto que desea modificar: " << endl;
+	cin >> codigo;
+
+	Producto* produ = mini->getProductoPorCodigo(codigo);
+
+	if (produ == nullptr)
+		throw "No existe producto con ese codigo";
+	else {
+		cout << "Que desea modificar del producto: " << endl
+			<< "1)Existencia" << endl
+			<< "2)Descripcion" << endl
+			<< "3)Precio" << endl;
+		cin >> op;
+		switch (op)
+		{
+		case 1: {
+			cout << "Ingrese la nueva existencia: " << endl;
+			cin >> cant;
+			produ->setExistencia(cant);
+			cout << "Producto modificado!" << endl;
+			system("pause");
+			break;
+		}
+		case 2: {
+			cout << "Ingrese la nueva descripcion: " << endl;
+			getline(cin, descrp);
+			produ->setDescripcion(descrp);
+			cout << "Producto modificado!" << endl;
+			system("pause");
+			break;
+		}
+		case 3: {
+			cout << "Ingrese el nuevo precio: " << endl;
+			cin >> precio;
+			produ->setPrecioCosto(precio);
+			cout << "Producto modificado!" << endl;
+			system("pause");
+			break;
+		}
+		default:
+			break;
+		}
+	}
 }

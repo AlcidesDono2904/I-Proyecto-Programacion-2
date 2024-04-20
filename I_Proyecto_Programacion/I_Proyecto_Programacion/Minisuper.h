@@ -8,8 +8,9 @@ class Minisuper {
 private:
 	ListaEnlazada<Producto>* productos;
 	ListaEnlazada<Venta>* ventas;
+	string nombre;
 public:
-	Minisuper();
+	Minisuper(string nom);
 	virtual ~Minisuper();
 	ListaEnlazada<Producto>* getProductos();
 	ListaEnlazada<Venta>* getVentas();

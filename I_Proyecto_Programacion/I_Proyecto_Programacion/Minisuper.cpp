@@ -1,9 +1,10 @@
 #include "Minisuper.h"
 
-Minisuper::Minisuper()
+Minisuper::Minisuper(string nom)
 {
     productos = new ListaEnlazada<Producto>();
     ventas = new ListaEnlazada<Venta>();
+    nombre = nom;
 }
 
 Minisuper::~Minisuper()
@@ -127,7 +128,7 @@ string Minisuper::mejoresCincoClientes()
         s << ventasOrden->obtener(i)->getCedulaCliente() << "con un importe de " << ventasOrden->obtener(i)->getImporte() << endl;
         s << "------------------" << endl;
     }
-
+    //sumar las ventas de cada cliente
     delete ventasOrden;
     return s.str();
 }
