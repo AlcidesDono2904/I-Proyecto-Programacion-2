@@ -54,3 +54,12 @@ Producto* Abarrote::clonar()
 {
 	return new Abarrote(codigo, nombreComercial, descripcion, precioCosto, categoria, existencia,limite, nacional, peso, fechaIngreso->getDia(), fechaIngreso->getMes(), fechaIngreso->getAnio(), nombreEmpresa );
 }
+
+void Abarrote::guardarProducto(ostream& archi)
+{
+}
+
+Producto* Abarrote::leerProductoAbarrote(istream& archi)
+{
+	return nullptr;
+}

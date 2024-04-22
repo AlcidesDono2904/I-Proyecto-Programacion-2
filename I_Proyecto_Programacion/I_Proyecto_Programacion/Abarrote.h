@@ -13,5 +13,7 @@ public:
 	string getNombreEmpresa();
 	string toString();
 	virtual Producto* clonar();
+	virtual void guardarProducto(ostream& archi);
+	static Producto* leerProductoAbarrote(istream& archi);
 };
 

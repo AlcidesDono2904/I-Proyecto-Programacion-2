@@ -77,27 +77,32 @@ void Controladora::controlReportes()
 			{
 			case 1: {
 				//Mostrar todos los productos
-				super->reportarProductos();
+				Interfaz::mostrarProductos(super);
+				system("pause");
 				break;
 			}
 			case 2: {
 				//Mostrar todos los productos de una categoría en especifíco
 				Interfaz::mostrarPorCategoria(super);
+				system("pause");
 				break;
 			}
 			case 3: {
 				//Mostrar productos debajo del limite de existencia
-				super->reportarDebajoExistencia();
+				Interfaz::reportarDebajoExistencia(super);
+				system("pause");
 				break;
 			}
 			case 4: {
 				// Pedir cedula para mostrar las ventas de esa persona
 				Interfaz::mostrarVentasPorCedula(super);
+				system("pause");
 				break;
 			}
 			case 5: {
 				//Mejores 5 clientes, sumar las ventas de cada cédula en especifico y compararlo
-				super->mejoresCincoClientes();
+				Interfaz::cincoMejoresClientes(super);
+				system("pause");
 				break;
 			}
 			default:

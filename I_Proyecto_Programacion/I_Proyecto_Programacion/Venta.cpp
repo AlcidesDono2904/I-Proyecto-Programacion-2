@@ -7,7 +7,7 @@ Venta::Venta():carrito(nullptr), numeroFat(0), cantidadProductos(0), importe(0),
 Venta::Venta(ComponenteAbstracto* carri, int numFac, int cantProd, string cedulaCli)
 :carrito(carri), numeroFat(numFac), cantidadProductos(cantProd), cedulaCliente(cedulaCli)
 {
-    subtotal = dynamic_cast<Producto*>(carrito)->getPrecioCosto();
+    
     importe = subtotal * 0.13 + subtotal;
 }
 
@@ -108,6 +108,6 @@ string Venta::toString() const
         << "Total: " << total << endl;
     s << "Carrito: " << endl;
     if (carrito!=nullptr)
-        s << carrito->toString();
+        s << carrito->toString()<<endl;
     return s.str();
 }

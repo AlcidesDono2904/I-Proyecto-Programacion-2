@@ -62,3 +62,29 @@ Producto* Embutido::clonar()
 {
 	return new Embutido(codigo, nombreComercial, descripcion, precioCosto, categoria, existencia, limite, nacional, peso, ptrPere->getVencimiento()->getDia(), ptrPere->getVencimiento()->getMes(), ptrPere->getVencimiento()->getAnio(), nombreAnimal, parteDelAnimal, marca, ptrEmpaque->getTripa());
 }
+
+void Embutido::guardarProducto(ostream& archi)
+{
+	archi << this->codigo << '\t'
+		<< this->nombreComercial << '\t'
+		<< this->descripcion << '\t'
+		<< this->precioCosto << '\t'
+		<< this->categoria << '\t'
+		<< this->existencia << '\t'
+		<< this->limite << '\t';
+	this->ptrPere->getVencimiento()->guardarFecha(archi);
+	archi << this->nombreAnimal << '\t'
+		<< this->parteDelAnimal << '\t'
+		<< this->marca << '\t'
+		<< this->ptrEmpaque->getTripa() << endl;
+}
+
+Producto* Embutido::leerProductoEmbutido(istream& archi)
+{
+	string codigo, nombre, descrip, precio, categ, exist, limi, nombreAni, parteAni, marca, tripa;
+	Fecha* fech;
+	getline(archi, codigo, '\t');
+	getline(archi, nombre, '\t');
+	return nullptr;
+
+}

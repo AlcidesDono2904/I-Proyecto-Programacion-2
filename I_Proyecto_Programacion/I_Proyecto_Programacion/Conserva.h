@@ -17,5 +17,7 @@ public:
 	bool getEnvasado();
 	virtual string toString();
 	virtual Producto* clonar();
+	virtual void guardarProducto(ostream& archi);
+	static Producto* leerProductoConserva(istream& archi);
 };
 

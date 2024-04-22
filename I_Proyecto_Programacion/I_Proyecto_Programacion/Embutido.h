@@ -18,5 +18,7 @@ public:
     string getMarca();
     string toString();
     virtual Producto* clonar();
+    virtual void guardarProducto(ostream& archi);
+    static Producto* leerProductoEmbutido(istream& archi);
 };
 

@@ -52,6 +52,34 @@ void Fecha::setAnio(unsigned int a){
 	anio = a;
 }
 
+void Fecha::guardarFecha(ostream& archi)
+{
+    archi << dia << '\t' <<
+        mes << '\t' <<
+        anio;
+}
+
+Fecha* Fecha::leerFecha(istream& archi)
+{
+	string d, m, a;
+
+	getline(archi, d, '\t');
+	getline(archi, m, '\t');
+	getline(archi, a, '\t');
+
+	int di, me, an;
+	stringstream r1(d);
+	r1 >> di;
+
+	stringstream r2(m);
+	r2 >> me;
+
+	stringstream r3(a);
+	r3 >> an;
+
+	return new Fecha(di, me, an);
+}
+
 std::ostream& operator<<(std::ostream& salida, const Fecha& f){
 	salida << f.dia << "/" << f.mes << "/" << f.anio;
 	return salida;

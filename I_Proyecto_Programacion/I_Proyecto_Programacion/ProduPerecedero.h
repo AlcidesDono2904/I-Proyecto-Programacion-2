@@ -18,5 +18,6 @@ public:
 	double getPeso();
 	virtual string toString() = 0;
 	virtual Producto* clonar() = 0;
+	virtual void guardarProducto(ostream& archi) = 0;
 };
 

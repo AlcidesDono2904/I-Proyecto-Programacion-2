@@ -3,6 +3,10 @@
 #include <ctime>
 #include <string>
 #include <iostream>
+#include <sstream>
+
+using namespace std;
+
 
 class Fecha{
 private:
@@ -21,6 +25,8 @@ public:
 	//sobrecarga operador
 	friend std::ostream& operator<<(std::ostream& os, const Fecha& fecha);
 	
+	void guardarFecha(ostream& archi);
+	static Fecha* leerFecha(istream& archi);
 };
 
 #endif

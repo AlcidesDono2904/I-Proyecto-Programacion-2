@@ -34,79 +34,87 @@ void Interfaz::VentaGeneraFactura(Minisuper* mini)
 	bool sePudo = true;
 	Producto* produ = nullptr;
 	ComponenteAbstracto* carrito = new Carrito();
-	ComponenteAbstracto* productoC;
-	
-	if (!mini->getProductos()->estaVacio()) {
-		cout << "----Ingrese su cedula para emitir la factura----" << endl;
-		cin >> ced;
-		do {
-			try {
-				cout << "----Productos disponibles---- " << endl;
-				cout << mini->reportarProductos() << endl;
-				cout << "Digite el codigo del producto que desea comprar: " << endl;
-				cin >> cod;
-				produ = mini->getProductoPorCodigo(cod);
-				if (produ == nullptr)
-					throw "No hay producto con ese codigo";
-				else {
-					cout << "Digite la cantidad de este producto que desea comprar: " << endl;
-					cin >> cant;
-					if (produ->getExistencia() < cant)
-						throw "No hay existe tanta cantidad de productos";
+	ComponenteAbstracto* productoC = nullptr;
+	try {
+		if (!mini->getProductos()->estaVacio()) {
+			cout << "----Ingrese su cedula para emitir la factura----" << endl;
+			cin >> ced;
+			do {
+				try {
+					cout << "----Productos disponibles---- " << endl;
+					cout << mini->reportarProductos() << endl;
+					cout << "Digite el codigo del producto que desea comprar: " << endl;
+					cin >> cod;
+					produ = mini->getProductoPorCodigo(cod);
+					if (produ == nullptr)
+						throw "No hay producto con ese codigo";
 					else {
-						categ = produ->getCategoria();
-						stringstream ct(categ);
-						int cat;
-						ct >> cat;
-						switch (cat)
-						{
-						case 01: {
-							productoC = new DecoradorConserva(carrito, dynamic_cast<Conserva*>(produ));
-							break;
-						}
-						case 02: {
-							productoC = new DecoradorAbarrote(carrito, dynamic_cast<Abarrote*>(produ));
-							break;
-						}
-						case 03: {
-							productoC = new DecoradorEmbutido(carrito, dynamic_cast<Embutido*>(produ));
-							break;
-						}
-						default:
-						{
-							break;
-						}
-					}
+						cout << "Digite la cantidad de este producto que desea comprar: " << endl;
+						cin >> cant;
+						if (produ->getExistencia() < cant)
+							throw "No hay existe tanta cantidad de productos";
+						else {
+							categ = produ->getCategoria();
+							stringstream ct(categ);
+							int cat;
+							ct >> cat;
+							switch (cat)
+							{
+							case 01: {
+								productoC = new DecoradorConserva(carrito, dynamic_cast<Conserva*>(produ));
+								break;
+							}
+							case 02: {
+								productoC = new DecoradorAbarrote(carrito, dynamic_cast<Abarrote*>(produ));
+								break;
+							}
+							case 03: {
+								productoC = new DecoradorEmbutido(carrito, dynamic_cast<Embutido*>(produ));
+								break;
+							}
+							default:
+							{
+								break;
+							}
+							}
 
-						//Modificar lista productos
-						mini->getProductoPorCodigo(cod)->setExistencia(produ->getExistencia() - cant);
-						//if (mini->getProductoPorCodigo(cod)->getExistencia() == 0) {
-						//	//metodo eliminar producto de la lista
-						//}
+							//Modificar lista productos
+							mini->getProductoPorCodigo(cod)->setExistencia(produ->getExistencia() - cant);
+							//if (mini->getProductoPorCodigo(cod)->getExistencia() == 0) {
+							//	//metodo eliminar producto de la lista
+							//}
 
+						}
 					}
 				}
+				catch (...) {
+					sePudo = false;
+					seguir = 0;
+				}
+				cantProdu += cant;
+				cout << "Su carrito va así: " << endl << productoC->toString()
+					<< "Si desea seguir añadiendo productos digite 1, si desea terminar su compra y recibir su factura digite 0" << endl;
+				cin >> seguir;
+			} while (seguir != 0);
+			if (sePudo) {
+				// Hacer venta y mostrar factura
+				Venta* ventaC = new Venta(productoC, 0, cantProdu, ced); //multiplicar el precio por la cantidad de productos
+				ventaC->setSubtotal(produ->getPrecioCosto());
+				mini->ingresarVenta(ventaC);
+				cout << "Aqui esta su factura: " << endl
+					<< ventaC->toString() << endl;
+				system("pause");
 			}
-			catch (...) {
-				sePudo = false;
-				seguir = 0;
-			}
-			cantProdu += cant;
-			cout << "Su carrito va así: " << endl << carrito->toString()
-				<< "Si desea seguir añadiendo productos digite 1, si desea terminar su compra y recibir su factura digite 0" << endl;
-			cin >> seguir;
-		} while (seguir != 0);
-		if (sePudo) {
-			// Hacer venta y mostrar factura
-			Venta* ventaC = new Venta(carrito, 0, cantProdu, ced); //multiplicar el precio por la cantidad de productos
-			mini->ingresarVenta(ventaC);
-			cout << "Aqui esta su factura: " << endl
-				<< ventaC->toString() << endl;
+			else throw "No se pudo hacer la venta";
+
 		}
-		else throw "No se pudo hacer la venta";
+
+		else throw "No hay productos en el minisuper";
+	}
+	catch (...) {
 
 	}
-	else throw "No hay productos en el minisuper";
+	
 }
 
 int Interfaz::MenuReportes()
@@ -125,6 +133,7 @@ int Interfaz::MenuReportes()
 void Interfaz::mostrarPorCategoria(Minisuper* mini)
 {
 	string categ = "";
+	cout << "Cual categoría desea ver: 01(Conserva), 02(Abarrote), 03(Embutido)" << endl;
 	cin >> categ;
 	cout << mini->reportarCategoria(categ);
 }
@@ -151,80 +160,82 @@ void Interfaz::ingresarProducto(Minisuper* mini)
 		<< "3)Embutido" << endl
 		<< "4)Desea retornar" << endl;
 	cin >> op;
-	system("cls");
+	while (op < 4) {
+		system("cls");
 
-	cout << "Codigo: " << endl;
-	cin >> codigo;
-	cout << "Nombre del producto: " << endl;
-	cin >> nombre;
-	cout << "Descripcion del producto: " << endl;
-	getline(cin, descripcion);
-	cout << "Precio: " << endl;
-	cin >> precio;
-	cout << "Cuantos productos va a ingresar: " << endl;
-	cin >> existencia;
-	cout << "Cual es el limite de productos: " << endl;
-	cin >> limite;
-	
+		cout << "Codigo: " << endl;
+		cin >> codigo;
+		cout << "Nombre del producto: " << endl;
+		cin >> nombre;
+		cout << "Descripcion del producto: " << endl;
+		getline(cin, descripcion);
+		cout << "Precio: " << endl;
+		cin >> precio;
+		cout << "Cuantos productos va a ingresar: " << endl;
+		cin >> existencia;
+		cout << "Cual es el limite de productos: " << endl;
+		cin >> limite;
 
-	switch (op)
-	{
-	case 1: {
-		cout << "Es envasado: si(1), no(0)" << endl;
-		cin >> envasado;
-		produ = new Conserva(codigo, nombre, descripcion, precio, "01", existencia, limite, envasado);
-		mini->ingresarProducto(produ);
-		cout << "Producto ingresado!" << endl;
-		system("pause");
-		break;
-	}
-	case 2: {
-		cout << "Es nacional, si(1), no(0) " << endl;
-		cin >> nacional;
-		cout << "Cuanto pesa: " << endl;
-		cin >> peso;
-		cout << "Fecha de vencimiento: " << endl << "Dia: " << endl;
-		cin >> dia;
-		cout << "Mes: " << endl;
-		cin >> mes;
-		cout << "Anio: " << endl;
-		cin >> anio;
-		cout << "Nombre de la empresa: " << endl;
-		cin >> nombreEmpresa;
 
-		produ = new Abarrote(codigo, nombre, descripcion, precio, "02", existencia, limite, nacional, peso, dia, mes, anio, nombreEmpresa);
-		mini->ingresarProducto(produ);
-		cout << "Producto ingresado!" << endl;
-		system("pause");
-		break;
-	}
-	case 3: {
-		cout << "Es nacional, si(1), no(0) " << endl;
-		cin >> nacional;
-		cout << "Cuanto pesa: " << endl;
-		cin >> peso;
-		cout << "Fecha de vencimiento: " << endl << "Dia: " << endl;
-		cin >> dia;
-		cout << "Mes: " << endl;
-		cin >> mes;
-		cout << "Anio: " << endl;
-		cin >> anio;
-		cout << "Nombre del Animal: " << endl;
-		cin >> nombreDelAnimal; 
-		cout << "Marca: " << endl;
-		cin >> marca;
-		cout << "Es tripa: " << endl;
-		cin >> tripa;
-		produ = new Embutido(codigo, nombre, descripcion, precio, "03", existencia, limite, nacional, peso, dia, mes, anio, nombreDelAnimal, parteDelAnimal, marca, tripa);
-		mini->ingresarProducto(produ);
-		cout << "Producto ingresado!" << endl;
-		system("pause");
-		break;
-	}
-	default:
-		break;
-	}
+		switch (op)
+		{
+		case 1: {
+			cout << "Es envasado: si(1), no(0)" << endl;
+			cin >> envasado;
+			produ = new Conserva(codigo, nombre, descripcion, precio, "01", existencia, limite, envasado);
+			mini->ingresarProducto(produ);
+			cout << "Producto ingresado!" << endl;
+			system("pause");
+			break;
+		}
+		case 2: {
+			cout << "Es nacional, si(1), no(0) " << endl;
+			cin >> nacional;
+			cout << "Cuanto pesa: " << endl;
+			cin >> peso;
+			cout << "Fecha de vencimiento: " << endl << "Dia: " << endl;
+			cin >> dia;
+			cout << "Mes: " << endl;
+			cin >> mes;
+			cout << "Anio: " << endl;
+			cin >> anio;
+			cout << "Nombre de la empresa: " << endl;
+			cin >> nombreEmpresa;
 
+			produ = new Abarrote(codigo, nombre, descripcion, precio, "02", existencia, limite, nacional, peso, dia, mes, anio, nombreEmpresa);
+			mini->ingresarProducto(produ);
+			cout << "Producto ingresado!" << endl;
+			system("pause");
+			break;
+		}
+		case 3: {
+			cout << "Es nacional, si(1), no(0) " << endl;
+			cin >> nacional;
+			cout << "Cuanto pesa: " << endl;
+			cin >> peso;
+			cout << "Fecha de vencimiento: " << endl << "Dia: " << endl;
+			cin >> dia;
+			cout << "Mes: " << endl;
+			cin >> mes;
+			cout << "Anio: " << endl;
+			cin >> anio;
+			cout << "Nombre del Animal: " << endl;
+			cin >> nombreDelAnimal;
+			cout << "Marca: " << endl;
+			cin >> marca;
+			cout << "Es tripa, si(1), no(0): " << endl;
+			cin >> tripa;
+			produ = new Embutido(codigo, nombre, descripcion, precio, "03", existencia, limite, nacional, peso, dia, mes, anio, nombreDelAnimal, parteDelAnimal, marca, tripa);
+			mini->ingresarProducto(produ);
+			cout << "Producto ingresado!" << endl;
+			system("pause");
+			break;
+		}
+		default:
+			break;
+		}
+		op = 4;
+	}
 }
 
 void Interfaz::eliminarProducto(Minisuper* mini)
@@ -293,4 +304,19 @@ void Interfaz::modificarProducto(Minisuper* mini)
 			break;
 		}
 	}
+}
+
+void Interfaz::mostrarProductos(Minisuper* mini)
+{
+	cout << mini->reportarProductos();
+}
+
+void Interfaz::reportarDebajoExistencia(Minisuper* mini)
+{
+	cout << mini->reportarDebajoExistencia();
+}
+
+void Interfaz::cincoMejoresClientes(Minisuper* mini)
+{
+	cout << mini->mejoresCincoClientes();
 }

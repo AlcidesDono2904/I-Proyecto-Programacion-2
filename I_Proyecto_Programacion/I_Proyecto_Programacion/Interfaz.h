@@ -16,5 +16,7 @@ public:
 	static void ingresarProducto(Minisuper* mini);
 	static void eliminarProducto(Minisuper* mini);
 	static void modificarProducto(Minisuper* mini);
-
+	static void mostrarProductos(Minisuper* mini);
+	static void reportarDebajoExistencia(Minisuper* mini);
+	static void cincoMejoresClientes(Minisuper* mini);
 };

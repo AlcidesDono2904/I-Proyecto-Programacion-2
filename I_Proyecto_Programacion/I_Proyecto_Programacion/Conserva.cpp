@@ -52,3 +52,12 @@ Producto* Conserva::clonar()
 {
 	return new Conserva(codigo, nombreComercial, descripcion, precioCosto, categoria, existencia, limite, envasado);
 }
+
+void Conserva::guardarProducto(ostream& archi)
+{
+}
+
+Producto* Conserva::leerProductoConserva(istream& archi)
+{
+	return nullptr;
+}
