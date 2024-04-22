@@ -3,7 +3,8 @@
 #include "Producto.h"
 #include "Venta.h"
 #include "Lista.h"
-
+#include "Cliente.h"
+#define UINT unsigned int
 class Minisuper {
 private:
 	ListaEnlazada<Producto>* productos;

@@ -18,6 +18,7 @@ public:
 	T* sacarDato(unsigned int posicion=0);//Por defecto saca el primer dato
 	T* inicio();
 	T* final();
+	void ordenar();
 	Nodo<T>* getPrimero();
 };
 
@@ -141,6 +142,26 @@ T* ListaEnlazada<T>::final() {
 	}
 	return aux->getDato();
 }
+
+template<class T>
+void ListaEnlazada<T>::ordenar() {
+	if (primero == nullptr) return;
+	Nodo<T>* aux = primero;
+	Nodo<T>* aux2 = aux;
+	while (aux != nullptr) {
+		aux2 = aux;
+		while (aux2 != nullptr) {
+			if (*(aux->getDato()) > *(aux2->getDato())) {
+				T* dato = aux->getDato();
+				aux->setDato(aux2->getDato());
+				aux2->setDato(dato);
+			}
+			aux2 = aux2->getSig();
+		}
+		aux = aux->getSig();
+	}
+}
+
 
 template<class T>
 inline Nodo<T>* ListaEnlazada<T>::getPrimero()

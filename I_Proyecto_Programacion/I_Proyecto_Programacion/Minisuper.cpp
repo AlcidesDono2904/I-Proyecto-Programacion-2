@@ -118,19 +118,29 @@ string Minisuper::mejoresCincoClientes()
     stringstream s;
    
     if(ventas->estaVacio()) return "No hay ventas\n";
-    ListaEnlazada<Venta>* ventasOrden = new ListaEnlazada<Venta>();
+    
+    ListaEnlazada<Cliente>*clientes = new ListaEnlazada<Cliente>();
     for (unsigned int i = 0; i < ventas->cantidad(); i++) {
-        Venta* ptrA = ventas->obtener(i);
-        insertarVentaOrdenada(ventasOrden, ptrA);
+        if (clientes->estaVacio()) {
+            Cliente* c = new Cliente(ventas->obtener(i)->getCedulaCliente(), ventas->obtener(i)->getSubtotal());
+            clientes->agregarInicio(c);
+        }
+        else {
+            bool esta = false;
+            for (UINT j = 0; j < clientes->cantidad(); j++) {
+               
+                if (ventas->obtener(i)->getCedulaCliente() == clientes->obtener(j)->getCedula()) {
+                    esta = true;
+                    clientes->inicio()->incrementarTotalVentas(ventas->obtener(i)->getSubtotal());
+                    break;
+                }
+            }
+            if (!esta) {
+				Cliente* c = new Cliente(ventas->obtener(i)->getCedulaCliente(), ventas->obtener(i)->getSubtotal());
+				clientes->agregarInicio(c);
+			}
+        }
     }
-    s << "Los mejores 5 clientes son: " << endl;
-    for (unsigned int i = 0; i < ventas->cantidad() || i< 5; i++) {
-        s << ventasOrden->obtener(i)->getCedulaCliente() << "con un importe de " << ventasOrden->obtener(i)->getImporte() << endl;
-        s << "------------------" << endl;
-    }
-    //sumar las ventas de cada cliente
-    delete ventasOrden;
-    return s.str();
 }
 
 Producto* Minisuper::getProductoPorCodigo(string cod)
