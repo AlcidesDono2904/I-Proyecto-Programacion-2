@@ -5,6 +5,7 @@ Minisuper::Minisuper(string nom)
     productos = new ListaEnlazada<Producto>();
     ventas = new ListaEnlazada<Venta>();
     nombre = nom;
+    this->leerProductos();
 }
 
 Minisuper::~Minisuper()
@@ -158,3 +159,52 @@ Producto* Minisuper::buscarProducto(string codigo) {
     }
     throw "Error: codigo/nombre incorrecto o el producto no existe";
 }
+
+void Minisuper::guardarProductos()
+{
+    ofstream archi;
+    archi.open("./Productos.txt");
+    for (unsigned int i = 0; i < productos->cantidad(); i++) {
+        productos->obtener(i)->guardarProducto(archi);
+    }
+}
+
+void Minisuper::leerProductos()
+{
+    ifstream archi;
+    Producto* produ = nullptr;
+    string categ;
+    archi.open("./Productos.txt");
+    if (archi.good()) {
+        while (!archi.eof()) {
+            getline(archi, categ);
+            stringstream ct(categ);
+            int cat;
+            ct >> cat;
+            switch (cat)
+            {
+            case 01: {
+                produ = Conserva::leerProductoConserva(archi);
+                break;
+            }
+            case 02: {
+                produ = Abarrote::leerProductoAbarrote(archi);
+                break;
+            }
+            case 03: {
+                produ = Embutido::leerProductoEmbutido(archi);
+                break;
+            }
+            default:
+            {
+                break;
+            }
+            }
+            if (produ != nullptr && produ->getCodigo() != "") {
+                productos->agregarInicio(produ);
+            }
+        }
+    }
+    archi.close();
+}
+

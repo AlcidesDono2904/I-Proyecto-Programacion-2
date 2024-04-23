@@ -3,6 +3,7 @@
 Controladora::Controladora()
 {
 	super = new Minisuper("Mini");
+	
 }
 
 Controladora::~Controladora()
@@ -22,7 +23,8 @@ void Controladora::control0()
 		case 1: this->controlMantenimiento(); break;
 		case 2: this->controlVentas(); break;
 		case 3: this->controlReportes(); break;
-		case 4: break;//archivos //salir
+		case 4: super->guardarProductos();
+			break;//archivos //salir
 
 		default:Interfaz::msjError();
 		}

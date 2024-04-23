@@ -54,9 +54,9 @@ void Fecha::setAnio(unsigned int a){
 
 void Fecha::guardarFecha(ostream& archi)
 {
-    archi << dia << '\t' <<
-        mes << '\t' <<
-        anio;
+	archi << dia << '\t' <<
+		mes << '\t' <<
+		anio << '\t';
 }
 
 Fecha* Fecha::leerFecha(istream& archi)

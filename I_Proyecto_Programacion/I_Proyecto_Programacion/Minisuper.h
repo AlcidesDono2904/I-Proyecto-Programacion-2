@@ -1,8 +1,10 @@
+#pragma once
 #ifndef MINISUPER_H
 #define MINISUPER_H
 #include "Producto.h"
 #include "Venta.h"
 #include "Lista.h"
+#include "headers.h"
 
 class Minisuper {
 private:
@@ -32,5 +34,10 @@ public:
 	Producto* getProductoPorCodigo(string cod);
 	void ingresarVenta(Venta* venta);
 	Producto* buscarProducto(string codigo);
+
+
+	//archivos
+	void guardarProductos();
+	void leerProductos();
 };
 #endif

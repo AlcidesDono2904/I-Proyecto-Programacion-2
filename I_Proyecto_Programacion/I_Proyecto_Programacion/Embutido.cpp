@@ -65,26 +65,68 @@ Producto* Embutido::clonar()
 
 void Embutido::guardarProducto(ostream& archi)
 {
-	archi << this->codigo << '\t'
+	archi << this->categoria << '\t'
 		<< this->nombreComercial << '\t'
 		<< this->descripcion << '\t'
 		<< this->precioCosto << '\t'
-		<< this->categoria << '\t'
+		<< this->codigo << '\t'
 		<< this->existencia << '\t'
-		<< this->limite << '\t';
+		<< this->limite << '\t'
+		<< this->nacional << '\t'
+		<< this->peso << '\t';
 	this->ptrPere->getVencimiento()->guardarFecha(archi);
 	archi << this->nombreAnimal << '\t'
 		<< this->parteDelAnimal << '\t'
 		<< this->marca << '\t'
-		<< this->ptrEmpaque->getTripa() << endl;
+		<< this->ptrEmpaque->getTripa() << '\n';
 }
 
 Producto* Embutido::leerProductoEmbutido(istream& archi)
 {
-	string codigo, nombre, descrip, precio, categ, exist, limi, nombreAni, parteAni, marca, tripa;
+	string cod, nombre, descrip, precio, categ, exist, limi, nombreAni, parteAni, marc, trip, nacio, pes;
 	Fecha* fech;
-	getline(archi, codigo, '\t');
+	ProduPerecedero* pere = nullptr;
+	Empaque* empa = nullptr;
+	getline(archi, categ, '\t');
 	getline(archi, nombre, '\t');
-	return nullptr;
+	getline(archi, descrip, '\t');
+	getline(archi, precio, '\t');
+	getline(archi, cod, '\t');
+	getline(archi, exist, '\t');
+	getline(archi, limi, '\t');
+	getline(archi, nacio, '\t');
+	getline(archi, pes, '\t');
+	fech = Fecha::leerFecha(archi);
+	getline(archi, nombreAni, '\t');
+	getline(archi, parteAni, '\t');
+	getline(archi, marc, '\t');
+	getline(archi, trip, '\n');
+
+	stringstream r1(precio);
+	double pre;
+	r1 >> pre;
+
+	stringstream r2(exist);
+	int exi;
+	r2 >> exi;
+
+	stringstream r3(limi);
+	int lim;
+	r3 >> lim;
+
+	stringstream r5(nacio);
+	bool nac;
+	r5 >> nac;
+
+	stringstream r6(pes);
+	double pe;
+	r6 >> pe;
+
+	stringstream r4(trip);
+	bool tri;
+	r3 >> tri;
+
+	
+	return new Embutido(cod, nombre, descrip, pre, categ, exi, lim, nac, pe, fech->getDia(), fech->getMes(), fech->getAnio(), nombreAni, parteAni, marc, tri);
 
 }
