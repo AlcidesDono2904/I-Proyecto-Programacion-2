@@ -5,17 +5,7 @@ Carne::Carne()
 }
 
 Carne::Carne(string codigo, string nombre, string descripcion, double precio, string categoria, int existencia, int limite, bool nacional, double peso, int dia, int mes, int anio, string nombreDelAnimal, string parteDelAnimal)
-{
-	this->codigo = codigo;
-	this->nombreComercial = nombre;
-	this->descripcion = descripcion;
-	this->precioCosto = precio;
-	this->categoria = categoria;
-	this->existencia = existencia;
-	this->limite = limite;
-	this->fechaIngreso = new Fecha;
-	this->nacional = nacional;
-	this->peso = peso;
+:ProduPerecedero( codigo,  nombre, descripcion, precio,  categoria, existencia,  limite,  nacional, peso, dia,  mes,  anio) {
 	ptrPere = new Perecedero(dia, mes, anio);
 	this->nombreAnimal = nombreDelAnimal;
 	this->parteDelAnimal = parteDelAnimal;

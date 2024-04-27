@@ -5,17 +5,7 @@ Abarrote::Abarrote() :ProduPerecedero(), nombreEmpresa("")
 }
 
 Abarrote::Abarrote(string codigo, string nombre, string descripcion, double precio, string categoria, int existencia, int limite, bool nacional, double peso, int dia, int mes, int anio, string nombreEmpresa)
-{
-	this->codigo = codigo;
-	this->nombreComercial = nombre;
-	this->descripcion = descripcion;
-	this->precioCosto = precio;
-	this->categoria = categoria;
-	this->existencia = existencia;
-	this->limite = limite;
-	this->fechaIngreso = new Fecha;
-	this->nacional = nacional;
-	this->peso = peso;
+:ProduPerecedero(codigo, nombre, descripcion, precio, categoria, existencia, limite, nacional, peso, dia, mes, anio) {
 	this->nombreEmpresa = nombreEmpresa;
 	ptrPere = new Perecedero(dia, mes, anio);
 }
@@ -41,9 +31,11 @@ string Abarrote::toString()
 		"\nNombre: " << nombreComercial <<
 		"\nDescripcion: " << descripcion <<
 		"\nPrecio: " << precioCosto <<
+		"\nPorcentaje de ganancia: " << Categoria::porceGanancia(categoria) <<
 		"\nCategoria: " << categoria <<
 		"\nExistencia: " << existencia <<
 		"\nLimite: " << limite <<
+		"\nPeso: " << peso <<
 		"\nFecha de ingreso: " << *fechaIngreso <<
 		"\nNombre de la Empresa: " << nombreEmpresa <<
 		"\nFecha de vencimiento: " << *ptrPere << endl;
@@ -57,17 +49,17 @@ Producto* Abarrote::clonar()
 
 void Abarrote::guardarProducto(ostream& archi)
 {
-	archi << this->categoria << '\t'
+	archi << 02 << '\t'
+		<< this->codigo << '\t'
 		<< this->nombreComercial << '\t'
 		<< this->descripcion << '\t'
 		<< this->precioCosto << '\t'
-		<< this->codigo << '\t'
 		<< this->existencia << '\t'
 		<< this->limite << '\t'
 		<< this->nacional << '\t'
 		<< this->peso << '\t';	
 	this->ptrPere->getVencimiento()->guardarFecha(archi);
-	archi << this->nombreEmpresa << '\n';
+	archi << this->nombreEmpresa << endl;
 	
 }
 
@@ -76,11 +68,10 @@ Producto* Abarrote::leerProductoAbarrote(istream& archi)
 	string cod, nombre, descrip, precio, categ, exist, limi, nombreE, nacio, pes;
 	Fecha* fech;
 	
-	getline(archi, categ, '\t');
+	getline(archi, cod, '\t');
 	getline(archi, nombre, '\t');
 	getline(archi, descrip, '\t');
 	getline(archi, precio, '\t');
-	getline(archi, cod, '\t');
 	getline(archi, exist, '\t');
 	getline(archi, limi, '\t');
 	getline(archi, nacio, '\t');
@@ -110,9 +101,11 @@ Producto* Abarrote::leerProductoAbarrote(istream& archi)
 	double pe;
 	r6 >> pe;
 
-	
+	stringstream r(categ);
+	string cate;
+	r >> cate;
 
 
-	return new Abarrote(cod, nombre, descrip, pre, categ, exi, lim, nac, pe, fech->getDia(), fech->getMes(), fech->getAnio(), nombreE);
+	return new Abarrote(cod, nombre, descrip, pre, "02", exi, lim, nac, pe, fech->getDia(), fech->getMes(), fech->getAnio(), nombreE);
 
 }

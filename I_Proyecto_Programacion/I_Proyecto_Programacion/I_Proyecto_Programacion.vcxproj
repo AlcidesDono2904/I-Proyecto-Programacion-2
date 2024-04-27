@@ -163,6 +163,10 @@
     <ClInclude Include="DecoradorEmbutido.h" />
     <ClInclude Include="Embutido.h" />
     <ClInclude Include="Empaque.h" />
+    <ClInclude Include="ExcepcionTipoDouble.h" />
+    <ClInclude Include="ExcepcionTipo.h" />
+    <ClInclude Include="ExcepcionTipoBool.h" />
+    <ClInclude Include="ExcepcionTipoInt.h" />
     <ClInclude Include="Fecha.h" />
     <ClInclude Include="Headers.h" />
     <ClInclude Include="Interfaz.h" />

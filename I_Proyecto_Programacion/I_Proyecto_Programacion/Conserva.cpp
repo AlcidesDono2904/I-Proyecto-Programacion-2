@@ -5,15 +5,7 @@ Conserva::Conserva() :Producto() {
 }
 
 Conserva::Conserva(string codigo, string nombre, string descripcion, double precio, string categoria, int existencia, int limite, bool envasado)
-{
-	this->codigo = codigo;
-	this->nombreComercial = nombre;
-	this->descripcion = descripcion;
-	this->precioCosto = precio;
-	this->categoria = categoria;
-	this->existencia = existencia;
-	this->limite = limite;
-	this->fechaIngreso = new Fecha;
+:Producto(codigo, nombre, descripcion, precio, categoria, existencia, limite) {
 	this->envasado = envasado;
 }
 
@@ -38,6 +30,7 @@ string Conserva::toString()
 		"\nNombre: " << nombreComercial <<
 		"\nDescripcion: " << descripcion <<
 		"\nPrecio: " << precioCosto <<
+		"\nPorcentaje de ganancia: " << Categoria::porceGanancia(categoria) <<
 		"\nCategoria: " << categoria <<
 		"\nExistencia: " << existencia <<
 		"\nLimite: " << limite <<
@@ -55,35 +48,28 @@ Producto* Conserva::clonar()
 
 void Conserva::guardarProducto(ostream& archi)
 {
-	archi << this->categoria << '\t'
+	archi <<  01 << '\t'
+		<< this->codigo << '\t'
 		<< this->nombreComercial << '\t'
 		<< this->descripcion << '\t'
 		<< this->precioCosto << '\t'
-		<< this->codigo << '\t'
 		<< this->existencia << '\t'
 		<< this->limite << '\t'
-		<< this->envasado << '\n';
-	/*
-	this->fechaIngreso->guardarFecha(archi);*/
+		<< this->envasado << endl;
 
 }
 
 Producto* Conserva::leerProductoConserva(istream& archi)
 {
-	string cod, nombre, descrip, precio, categ, exist, limi, nombreE, nacio, pes, envasa;
+	string cod, nombre, descrip, precio, categ, exist, limi, nombreE, nacio, pes, envasa, aux;
 	
-
-	getline(archi, categ, '\t');
-	getline(archi, nombre, '\t');
-	getline(archi, descrip, '\t');
-	getline(archi, precio, '\t');
-	getline(archi, cod, '\t');
-	getline(archi, exist, '\t');
-	getline(archi, limi, '\t');
-	getline(archi, nacio, '\t');
-	getline(archi, pes, '\t');
-	getline(archi, envasa, '\n');
-	//fech = Fecha::leerFecha(archi);
+	getline(archi, cod, '\t');     
+	getline(archi, nombre, '\t'); 
+	getline(archi, descrip, '\t'); 
+	getline(archi, precio, '\t');  
+	getline(archi, exist, '\t');  
+	getline(archi, limi, '\t');    
+	getline(archi, envasa, '\n');  
 
 
 	stringstream r1(precio);
@@ -98,18 +84,14 @@ Producto* Conserva::leerProductoConserva(istream& archi)
 	int lim;
 	r3 >> lim;
 
-	stringstream r5(nacio);
-	bool nac;
-	r5 >> nac;
-
-	stringstream r6(pes);
-	double pe;
-	r6 >> pe;
 
 	stringstream r4(envasa);
 	bool enva;
 	r4 >> enva;
 
+	stringstream r(categ);
+	string cate;
+	r >> cate;
 	
-	return new Conserva(cod, nombre, descrip, pre, categ, exi, lim, enva);
+	return new Conserva(cod, nombre, descrip, pre, "01", exi, lim, enva);
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include "Carne.h"
 #include "Empaque.h"
+#include "Categoria.h"
 class Embutido :
     public Carne
 {

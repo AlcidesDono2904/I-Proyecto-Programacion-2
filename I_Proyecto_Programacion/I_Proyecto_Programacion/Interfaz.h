@@ -19,4 +19,5 @@ public:
 	static void mostrarProductos(Minisuper* mini);
 	static void reportarDebajoExistencia(Minisuper* mini);
 	static void cincoMejoresClientes(Minisuper* mini);
+	
 };

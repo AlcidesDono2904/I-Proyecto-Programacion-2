@@ -15,3 +15,9 @@ ComponenteAbstracto* DecoradorEmbutido::clonar()
 {
 	return new DecoradorEmbutido(decorado, embutido);
 }
+//double DecoradorEmbutido::CalcularPrecioCarrito(int canti)
+//{
+//	return embutido->getPrecioCosto() * canti;
+//}
+
+//

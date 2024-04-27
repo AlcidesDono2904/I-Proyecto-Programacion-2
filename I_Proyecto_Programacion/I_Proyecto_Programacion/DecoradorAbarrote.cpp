@@ -15,3 +15,8 @@ ComponenteAbstracto* DecoradorAbarrote::clonar()
 {
 	return new DecoradorAbarrote(decorado, abarrote);
 }
+
+//double DecoradorAbarrote::CalcularPrecioCarrito(int canti)
+//{
+//	return abarrote->getPrecioCosto() * canti;
+//}

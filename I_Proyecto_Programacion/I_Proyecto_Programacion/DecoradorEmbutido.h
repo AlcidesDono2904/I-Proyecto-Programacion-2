@@ -9,8 +9,9 @@ private:
 public:
 	DecoradorEmbutido(ComponenteAbstracto* decorado, Embutido* embutido);
 	virtual ~DecoradorEmbutido();
-	std::string toString() override;
+	std::string toString();
 	virtual ComponenteAbstracto* clonar();
+	//virtual double CalcularPrecioCarrito(int canti);
 };
 
 #endif 

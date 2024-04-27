@@ -4,7 +4,7 @@
 class Categoria{
 public:
 	virtual ~Categoria();
-	double porceGanancia(std::string);
+	static double porceGanancia(std::string);
 
 };
 #endif

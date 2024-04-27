@@ -6,20 +6,7 @@ Embutido::Embutido():Carne(), marca(""), ptrEmpaque(NULL)
 
 
 Embutido::Embutido(string codigo, string nombre, string descripcion, double precio, string categoria, int existencia, int limite, bool nacional, double peso, int dia, int mes, int anio, string nombreDelAnimal, string parteDelAnimal, string marca, bool tripa)
-{
-	this->codigo = codigo;
-	this->nombreComercial = nombre;
-	this->descripcion = descripcion;
-	this->precioCosto = precio;
-	this->categoria = categoria;
-	this->existencia = existencia;
-	this->limite = limite;
-	this->fechaIngreso = new Fecha;
-	this->nacional = nacional;
-	this->peso = peso;
-	ptrPere = new Perecedero(dia, mes, anio);
-	this->nombreAnimal = nombreDelAnimal;
-	this->parteDelAnimal = parteDelAnimal;
+:Carne(codigo, nombre, descripcion, precio, categoria, existencia, limite, nacional, peso, dia, mes, anio,nombreDelAnimal, parteDelAnimal) {
 	this->marca = marca;
 	ptrEmpaque = new Empaque(tripa);
 }
@@ -46,6 +33,7 @@ string Embutido::toString()
 		"\nNombre: " << nombreComercial <<
 		"\nDescripcion: " << descripcion <<
 		"\nPrecio: " << precioCosto <<
+		"\nPorcentaje de ganancia: " << Categoria::porceGanancia(categoria) <<
 		"\nCategoria: " << categoria <<
 		"\nExistencia: " << existencia <<
 		"\nLimite: " << limite <<
@@ -65,11 +53,11 @@ Producto* Embutido::clonar()
 
 void Embutido::guardarProducto(ostream& archi)
 {
-	archi << this->categoria << '\t'
+	archi << 03 << '\t'
+		<< this->codigo << '\t'
 		<< this->nombreComercial << '\t'
 		<< this->descripcion << '\t'
 		<< this->precioCosto << '\t'
-		<< this->codigo << '\t'
 		<< this->existencia << '\t'
 		<< this->limite << '\t'
 		<< this->nacional << '\t'
@@ -78,7 +66,7 @@ void Embutido::guardarProducto(ostream& archi)
 	archi << this->nombreAnimal << '\t'
 		<< this->parteDelAnimal << '\t'
 		<< this->marca << '\t'
-		<< this->ptrEmpaque->getTripa() << '\n';
+		<< this->ptrEmpaque->getTripa() << endl;
 }
 
 Producto* Embutido::leerProductoEmbutido(istream& archi)
@@ -87,11 +75,10 @@ Producto* Embutido::leerProductoEmbutido(istream& archi)
 	Fecha* fech;
 	ProduPerecedero* pere = nullptr;
 	Empaque* empa = nullptr;
-	getline(archi, categ, '\t');
+	getline(archi, cod, '\t');
 	getline(archi, nombre, '\t');
 	getline(archi, descrip, '\t');
 	getline(archi, precio, '\t');
-	getline(archi, cod, '\t');
 	getline(archi, exist, '\t');
 	getline(archi, limi, '\t');
 	getline(archi, nacio, '\t');
@@ -126,7 +113,10 @@ Producto* Embutido::leerProductoEmbutido(istream& archi)
 	bool tri;
 	r3 >> tri;
 
+	stringstream r(categ);
+	string cate;
+	r >> cate;
 	
-	return new Embutido(cod, nombre, descrip, pre, categ, exi, lim, nac, pe, fech->getDia(), fech->getMes(), fech->getAnio(), nombreAni, parteAni, marc, tri);
+	return new Embutido(cod, nombre, descrip, pre, "03", exi, lim, nac, pe, fech->getDia(), fech->getMes(), fech->getAnio(), nombreAni, parteAni, marc, tri);
 
 }

@@ -5,15 +5,7 @@ ProduPerecedero::ProduPerecedero():Producto(), nacional(false), peso(0), ptrPere
 }
 
 ProduPerecedero::ProduPerecedero(string codigo, string nombre, string descripcion, double precio, string categoria, int existencia, int limite, bool nacional, double peso, int dia, int mes, int anio)
-{
-	this->codigo = codigo;
-	this->nombreComercial = nombre;
-	this->descripcion = descripcion;
-	this->precioCosto = precio;
-	this->categoria = categoria;
-	this->existencia = existencia;
-	this->limite = limite;
-	this->fechaIngreso = new Fecha;
+:Producto(codigo, nombre, descripcion, precio, categoria, existencia, limite) {
 	this->nacional = nacional;
 	this->peso = peso;
 	ptrPere = new Perecedero(dia, mes, anio);

@@ -11,6 +11,7 @@ public:
 	std::string toString() override;
 	virtual ~DecoradorAbarrote();
 	virtual ComponenteAbstracto* clonar();
+	//virtual double CalcularPrecioCarrito(int canti);
 };
 
 #endif

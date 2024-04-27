@@ -2,6 +2,7 @@
 #include <sstream>
 #include <iostream>
 #include "Producto.h"
+#include "Categoria.h"
 
 using namespace std;
 

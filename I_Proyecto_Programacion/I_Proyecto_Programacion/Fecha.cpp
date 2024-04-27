@@ -11,14 +11,14 @@ Fecha::Fecha() {//constructor por defecto
     dia = tLocal.tm_mday;
     mes = tLocal.tm_mon + 1;
     anio = tLocal.tm_year + 1900;
-    //se necesita hacer un pequenio calculo para sacar la fecha correcta.
+    //se necesita hacer un pequenio cálculo para sacar la fecha correcta.
 }
 
 Fecha::Fecha(unsigned int d, unsigned int m, unsigned int a){//constructor por parametros
-    if (d == 0 or d > 31)
+    /*if (d == 0 or d > 31)
         throw  "Error: dia incorrecto";
     if (m==0 or m>12)
-        throw "Error: mes incorrecto";
+        throw "Error: mes incorrecto";*/
     dia=d;
     mes = m;
     anio = a;
@@ -37,14 +37,14 @@ unsigned int Fecha::getAnio()const{
 }
 
 void Fecha::setDia(unsigned int d){
-	if (d == 0 or d > 31)
-		throw  "Error: dia incorrecto";
+	/*if (d == 0 or d > 31)
+		throw  "Error: dia incorrecto";*/
 	dia = d;
 }
 
 void Fecha::setMes(unsigned int m){
-	if (m == 0 or m > 12)
-		throw "Error: mes incorrecto";
+	/*if (m == 0 or m > 12)
+		throw "Error: mes incorrecto";*/
 	mes = m;
 }
 

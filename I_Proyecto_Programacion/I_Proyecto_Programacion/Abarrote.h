@@ -1,5 +1,6 @@
 #pragma once
 #include "ProduPerecedero.h"
+#include "Categoria.h"
 
 class Abarrote: public ProduPerecedero
 {

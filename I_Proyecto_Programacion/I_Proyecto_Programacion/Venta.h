@@ -8,26 +8,24 @@ using namespace std;
 class Venta {
 private:
 	ComponenteAbstracto* carrito;
-	int numeroFat;
 	int cantidadProductos;
 	double importe;
 	double IVA;
 	double subtotal;
-	double total;
 	string cedulaCliente;
 public:
 	Venta();
-	Venta(ComponenteAbstracto* carrito, int numFac, int cantProd, string cedulaCli);
+	Venta(ComponenteAbstracto* carrito, int cantProd, string cedulaCli);
 	Venta(const Venta&);
 	virtual ~Venta();
 	ComponenteAbstracto* getCarrito();
-	int getNumeroFact();
+	
 	string getCedulaCliente();
 	double getImporte();
 	double getIVA();
 	double getSubtotal();
 	void setCarrito(ComponenteAbstracto* carrito);
-	void setNumFact(int numFac);
+	
 	void setCantidadProductos(int cantProd);
 	void setCedulaCliente(string cedulaCli);
 	void setImporte(double imp);

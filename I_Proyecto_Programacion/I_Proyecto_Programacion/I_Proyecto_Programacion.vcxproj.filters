@@ -28,6 +28,9 @@
     <Filter Include="Archivos de encabezado\Lista">
       <UniqueIdentifier>{b8d587f6-cb4e-4cd7-a7d2-cf589d153e89}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\Excepciones">
+      <UniqueIdentifier>{158c8e0a-719d-406d-8f26-c89e095e7a6a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Fecha.cpp">
@@ -163,6 +166,18 @@
     </ClInclude>
     <ClInclude Include="Venta.h">
       <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="ExcepcionTipo.h">
+      <Filter>Archivos de encabezado\Excepciones</Filter>
+    </ClInclude>
+    <ClInclude Include="ExcepcionTipoBool.h">
+      <Filter>Archivos de encabezado\Excepciones</Filter>
+    </ClInclude>
+    <ClInclude Include="ExcepcionTipoInt.h">
+      <Filter>Archivos de encabezado\Excepciones</Filter>
+    </ClInclude>
+    <ClInclude Include="ExcepcionTipoDouble.h">
+      <Filter>Archivos de encabezado\Excepciones</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

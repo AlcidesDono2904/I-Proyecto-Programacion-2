@@ -33,8 +33,8 @@ public:
 	string mejoresCincoClientes();
 	Producto* getProductoPorCodigo(string cod);
 	void ingresarVenta(Venta* venta);
-	Producto* buscarProducto(string codigo);
 
+	bool verificarCodigoUnico(string cod);
 
 	//archivos
 	void guardarProductos();
