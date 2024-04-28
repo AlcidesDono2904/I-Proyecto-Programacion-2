@@ -103,3 +103,15 @@ string Venta::toString() const
         s << carrito->toString()<<endl;
     return s.str();
 }
+
+void Venta::guardarVenta(ofstream& archi)
+{
+    stringstream s;
+
+    s<<cantidadProductos<<endl;
+    s<<importe<<endl;
+    s<<IVA<<endl;
+    s<<subtotal<<endl;
+    s<<cedulaCliente<<endl;
+    s<<carrito->guardarCarrito()<<endl;
+}
