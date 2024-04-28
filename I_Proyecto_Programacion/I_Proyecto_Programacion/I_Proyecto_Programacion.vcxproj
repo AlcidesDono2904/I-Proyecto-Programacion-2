@@ -131,6 +131,7 @@
     <ClCompile Include="Carne.cpp" />
     <ClCompile Include="Carrito.cpp" />
     <ClCompile Include="Categoria.cpp" />
+    <ClCompile Include="Cliente.cpp" />
     <ClCompile Include="ComponenteAbstracto.cpp" />
     <ClCompile Include="Conserva.cpp" />
     <ClCompile Include="Controladora.cpp" />
@@ -154,6 +155,7 @@
     <ClInclude Include="Carne.h" />
     <ClInclude Include="Carrito.h" />
     <ClInclude Include="Categoria.h" />
+    <ClInclude Include="Cliente.h" />
     <ClInclude Include="ComponenteAbstracto.h" />
     <ClInclude Include="Conserva.h" />
     <ClInclude Include="Controladora.h" />

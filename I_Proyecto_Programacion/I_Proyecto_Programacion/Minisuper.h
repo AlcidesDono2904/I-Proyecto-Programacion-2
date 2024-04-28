@@ -5,6 +5,7 @@
 #include "Venta.h"
 #include "Lista.h"
 #include "headers.h"
+#include "Cliente.h"
 
 class Minisuper {
 private:

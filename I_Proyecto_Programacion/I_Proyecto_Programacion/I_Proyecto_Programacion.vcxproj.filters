@@ -96,6 +96,9 @@
     <ClCompile Include="Venta.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="Cliente.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Fecha.h">
@@ -178,6 +181,9 @@
     </ClInclude>
     <ClInclude Include="ExcepcionTipoDouble.h">
       <Filter>Archivos de encabezado\Excepciones</Filter>
+    </ClInclude>
+    <ClInclude Include="Cliente.h">
+      <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
