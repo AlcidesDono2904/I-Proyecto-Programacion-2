@@ -14,6 +14,6 @@ public:
 	virtual ComponenteAbstracto* getDecorado() = 0;
 	virtual ComponenteAbstracto* clonar() = 0;
 	virtual void guardarCarrito(ostream&)=0;
-	
+	virtual ComponenteAbstracto* leerCarrito(istream&) = 0;
 };
 #endif

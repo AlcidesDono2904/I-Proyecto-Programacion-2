@@ -12,6 +12,7 @@ public:
 	std::string toString()override;
 	virtual ComponenteAbstracto* clonar();
 	virtual void guardarCarrito(ostream&);
+	virtual ComponenteAbstracto* leerCarrito(istream&);
 };
 
 #endif

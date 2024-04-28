@@ -6,6 +6,7 @@ Minisuper::Minisuper(string nom)
     ventas = new ListaEnlazada<Venta>();
     nombre = nom;
     this->leerProductos();
+    this->leerVentas();
 }
 
 Minisuper::~Minisuper()
@@ -249,4 +250,16 @@ void Minisuper::guardarVentas()
 
 void Minisuper::leerVentas()
 {
+    ifstream archi;
+    Venta* vent = nullptr;
+    archi.open("./Ventas.txt");
+    if (archi.good()) {
+        while (!archi.eof()) {
+            vent = Venta::leerVenta(archi);
+            if (vent != nullptr || vent->getCedulaCliente() != "") {
+                ventas->agregarInicio(vent);
+            }
+        }
+    }
+    archi.close();
 }

@@ -20,6 +20,11 @@ ComponenteAbstracto* Carrito::clonar()
 	return new Carrito();
 }
 
-void Carrito::guardarCarrito(ostream&)
+void Carrito::guardarCarrito(ostream& )
 {
+}
+
+ComponenteAbstracto* Carrito::leerCarrito(istream& archi)
+{
+	return new Carrito();
 }

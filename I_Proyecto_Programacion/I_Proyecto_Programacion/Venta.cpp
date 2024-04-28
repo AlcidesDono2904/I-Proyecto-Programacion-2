@@ -2,6 +2,7 @@
 
 Venta::Venta():carrito(nullptr), cantidadProductos(0), importe(0), IVA(0), subtotal(0), cedulaCliente(""), numFact(0)
 {
+    IVA = 0.13;
 }
 
 Venta::Venta(ComponenteAbstracto* carri, int cantProd, string cedulaCli)
@@ -125,5 +126,40 @@ void Venta::guardarVenta(ostream& archi)
 
 Venta* Venta::leerVenta(istream& archi)
 {
-    return nullptr;
+    string cedulaClient, numFac, cantiProdu, subtota, impor;
+    ComponenteAbstracto* carri = nullptr;
+    Venta* vent = new Venta();
+
+    getline(archi, cantiProdu, '\t');
+    getline(archi, cedulaClient, '\t');
+    getline(archi, numFac, '\t');
+    getline(archi, subtota, '\t');
+    getline(archi, impor, '\t');
+
+    stringstream r1(numFac);
+    int numF;
+    r1 >> numF;
+
+    stringstream r2(cantiProdu);
+    int cantiP;
+    r2 >> cantiP;
+
+    stringstream r3(subtota);
+    double subto;
+    r3 >> subto;
+
+    stringstream r4(impor);
+    double imp;
+    r4 >> imp;
+
+    carri->leerCarrito(archi);
+
+    vent->setCedulaCliente(cedulaClient);
+    vent->setCantidadProductos(cantiP);
+    vent->setCarrito(carri);
+    vent->setImporte(imp);
+    vent->setSubtotal(subto);
+    vent->setNumFact(numF);
+
+    return vent;
 }

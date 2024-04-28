@@ -16,6 +16,11 @@ ComponenteAbstracto* DecoradorAbarrote::getDecorado()
 	return decorado;
 }
 
+Abarrote* DecoradorAbarrote::getAbarrote()
+{
+	return abarrote;
+}
+
 ComponenteAbstracto* DecoradorAbarrote::clonar()
 {
 	return new DecoradorAbarrote(decorado, abarrote);
@@ -24,9 +29,14 @@ ComponenteAbstracto* DecoradorAbarrote::clonar()
 
 void DecoradorAbarrote::guardarCarrito(ostream& archi) {
 	this->abarrote->guardarProducto(archi);
+	this->decorado->guardarCarrito(archi);
 }
 
-ComponenteAbstracto* DecoradorAbarrote::leerCarrito(istream&)
+ComponenteAbstracto* DecoradorAbarrote::leerCarrito(istream& archi)
 {
-	return nullptr;
+	Abarrote* aba = nullptr;
+	ComponenteAbstracto* deco = nullptr;
+	aba->leerProductoAbarrote(archi);
+	deco->leerCarrito(archi);
+	return new DecoradorAbarrote(deco, aba);
 }

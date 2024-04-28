@@ -1,6 +1,6 @@
 #ifndef DECORADORABARROTE_H
 #define DECORADORABARROTE_H
-
+#include "headers.h"
 #include "DecoradorAbstracto.h"
 #include "Abarrote.h"
 class DecoradorAbarrote : public DecoradorAbstracto{
@@ -12,9 +12,10 @@ public:
 	std::string toString() override;
 	virtual ~DecoradorAbarrote();
 	virtual ComponenteAbstracto* getDecorado();
+	Abarrote* getAbarrote();
 	virtual ComponenteAbstracto* clonar();
 	virtual void guardarCarrito(ostream&);
-	static ComponenteAbstracto* leerCarrito(istream&);
+	virtual ComponenteAbstracto* leerCarrito(istream&);
 };
 
 #endif

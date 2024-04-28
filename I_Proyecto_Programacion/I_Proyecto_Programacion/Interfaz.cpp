@@ -63,7 +63,7 @@ void Interfaz::VentaGeneraFactura(Minisuper* mini)
 						cin.ignore(numeric_limits<streamsize>::max(), '\n');
 						throw* new ExcepcionTipoInt();
 					}
-					if (produ->getExistencia() < cant)
+					if (produ->getExistencia() < cant || cant <= 0)
 						cout << "No hay existe tanta cantidad de productos" << endl;
 					
 					else {
@@ -100,18 +100,13 @@ void Interfaz::VentaGeneraFactura(Minisuper* mini)
 						}
 						}
 
-						//Modificar lista productos
-						mini->getProductoPorCodigo(cod)->setExistencia(produ->getExistencia() - cant);
-						//Dar una advertencia de que algún producto este debajo del limite
+
 						cantProdu += cant;
 						ventaC = new Venta(productoC, cantProdu, ced);
-						ventaC->setSubtotal(produ->getPrecioCosto() * cant * Categoria::porceGanancia(categ));
-						sub = ventaC->getSubtotal();
 
-						ventaC->setImporte(sub * 0.13 + sub);
-						
+
 						system("CLS");
-						cout << "Su carrito va asi: " << endl << productoC->toString() << endl;
+						cout << "Su carrito va asi: " << endl << "Lleva " << cant << " de: " << productoC->toString() << endl;
 						if (ventaC != nullptr)
 							sePudo = true;
 						cout << "Si desea seguir añadiendo productos digite 1, si desea terminar su compra y recibir su factura digite 0" << endl;
@@ -127,6 +122,11 @@ void Interfaz::VentaGeneraFactura(Minisuper* mini)
 			//Hacer una venta arriba e ir agregandole los productos en el switch o arriba
 			// Hacer venta y mostrar factura
 			 //multiplicar el precio por la cantidad de productos
+			mini->getProductoPorCodigo(cod)->setExistencia(produ->getExistencia() - cant);
+
+			ventaC->setSubtotal(produ->getPrecioCosto() * cant * Categoria::porceGanancia(categ));
+			sub = ventaC->getSubtotal();
+			ventaC->setImporte(sub * 0.13 + sub);
 
 			mini->ingresarVenta(ventaC);
 			cout << "Aqui esta su factura: " << endl

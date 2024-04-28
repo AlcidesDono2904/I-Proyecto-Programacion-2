@@ -16,6 +16,11 @@ ComponenteAbstracto* DecoradorConserva::getDecorado()
 	return decorado;
 }
 
+Conserva* DecoradorConserva::getConserva()
+{
+	return conserva;
+}
+
 ComponenteAbstracto* DecoradorConserva::clonar()
 {
 	return new DecoradorConserva(decorado, conserva);
@@ -24,10 +29,15 @@ ComponenteAbstracto* DecoradorConserva::clonar()
 void DecoradorConserva::guardarCarrito(ostream& archi)
 {
 	this->conserva->guardarProducto(archi);
+	this->decorado->guardarCarrito(archi);
 }
 
-ComponenteAbstracto* DecoradorConserva::leerCarrito(istream&)
+ComponenteAbstracto* DecoradorConserva::leerCarrito(istream& archi)
 {
-	return nullptr;
+	Conserva* conse = nullptr;
+	ComponenteAbstracto* deco = nullptr;
+	conse->leerProductoConserva(archi);
+	deco->leerCarrito(archi);
+	return new DecoradorConserva(deco, conse);
 }
 

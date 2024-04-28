@@ -1,6 +1,7 @@
 #ifndef DECORADORCONSERVA_H
 #define DECORADORCONSERVA_H
 #include "DecoradorAbstracto.h"
+#include "headers.h"
 #include "Conserva.h"
 class DecoradorConserva : public DecoradorAbstracto{
 private:
@@ -10,9 +11,11 @@ public:
 	virtual ~DecoradorConserva();
 	std::string toString()override;
 	virtual ComponenteAbstracto* getDecorado();
+	Conserva* getConserva();
 	virtual ComponenteAbstracto* clonar();
 	virtual void guardarCarrito(ostream&);
-	static ComponenteAbstracto* leerCarrito(istream&);
+	virtual ComponenteAbstracto* leerCarrito(istream&);
+
 };
 
 #endif
