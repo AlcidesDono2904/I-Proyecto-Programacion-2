@@ -118,10 +118,9 @@ void Venta::guardarVenta(ostream& archi)
         << subtotal << '\t'
         << importe << endl;
     if (carrito != nullptr) {
-        while (carrito->getDecorado() != dynamic_cast<Carrito*>(carrito->getDecorado())) {
-            carrito->guardarCarrito(archi);
-        }
+        carrito->guardarCarrito(archi);
     }
+
 }
 
 Venta* Venta::leerVenta(istream& archi)

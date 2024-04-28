@@ -161,6 +161,7 @@ Producto* Minisuper::getProductoPorCodigo(string cod)
 void Minisuper::ingresarVenta(Venta* venta)
 {
     ventas->agregarInicio(venta);
+    venta->setNumFact(ventas->cantidad());
     
 }
 
