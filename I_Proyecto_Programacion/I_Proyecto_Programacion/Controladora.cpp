@@ -15,7 +15,7 @@ Controladora::~Controladora()
 void Controladora::control0()
 {
 	int opcion;
-	
+	setlocale(LC_ALL, "spanish");
 		do {
 			try {
 				system("CLS");
@@ -154,5 +154,6 @@ void Controladora::controlReportes()
 void Controladora::controlVentas()
 {
 	//Crear venta
+	system("CLS");
 	Interfaz::VentaGeneraFactura(super);
 }

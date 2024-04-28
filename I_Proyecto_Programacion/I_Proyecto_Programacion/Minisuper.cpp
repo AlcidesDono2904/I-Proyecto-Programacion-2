@@ -117,43 +117,33 @@ void Minisuper::insertarVentaOrdenada(ListaEnlazada<Venta>* ventasOrden, const V
 string Minisuper::mejoresCincoClientes()
 {
     stringstream s;
+    bool esta = false;
+
+    if(ventas->estaVacio()) return "No hay ventas\n";
+
+    //listar los clientes
+    ListaEnlazada<Cliente>* clientes = new ListaEnlazada<Cliente>();
     
-   
+    for (unsigned int i = 0; i < ventas->cantidad(); i++) {
+        for (unsigned int j = 0; j < clientes->cantidad() and !esta; i++) {
+            esta=(ventas->obtener(i)->getCedulaCliente() == clientes->obtener(j)->getCedula());
+            if(esta) clientes->obtener(j)->setTVentas(clientes->obtener(j)->getTVentas() + ventas->obtener(i)->getSubtotal());
+        }
+        if (!esta) clientes->agregarInicio(new Cliente(ventas->obtener(i)->getCedulaCliente(), ventas->obtener(i)->getSubtotal()));
+        esta = false;
+    }
+
+    //ordenar los clientes en orden de quien ha comprado mas
+    clientes->ordenar();
+
+    //listar las ventas de los 5 mejores clientes
+    for (unsigned int i = 0; i < clientes->cantidad() and i < 5; i++) {
+        s<<"====================\n";
+        s<<"Cliente numero: "<<i+1<<endl;
+        s<<"Cedula: "<<clientes->obtener(i)->getCedula()<<endl;
+        s<<"Total gastado: "<<clientes->obtener(i)->getTVentas()<<endl;
+    }
     
-    // string cedulaCliente = ventas->obtener(i)->getCedulaCliente();
-    //for (unsigned int i = 0; i < ventas->cantidad(); ++i) {
-    //    const Venta* venta = ventas->obtener(i);
-    //    std::string cedulaCliente = venta->getCedulaCliente();
-
-    //    // Buscar si la cédula de cliente ya está en el arreglo de mejores clientes
-    //    for (int j = 0; j < MAX_CLIENTES; ++j) {
-    //        if (mejoresClientes[j].first == cedulaCliente) {
-    //            // Si la cédula de cliente ya está en el arreglo, incrementar su cantidad de ventas
-    //            ++mejoresClientes[j].second;
-    //            break;
-    //        }
-    //        else if (mejoresClientes[j].second == 0) {
-    //            // Si encontramos una posición vacía en el arreglo, agregar una nueva entrada con una venta
-    //            mejoresClientes[j].first = cedulaCliente;
-    //            mejoresClientes[j].second = 1;
-    //            break;
-    //        }
-    //    }
-    //}
-    ////ListaEnlazada<Venta>* ventasOrden = new ListaEnlazada<Venta>();
-    //for (unsigned int i = 0; i < ventas->cantidad(); i++) {
-    //    Venta* ptrA = ventas->obtener(i);
-    //    insertarVentaOrdenada(ventasOrden, ptrA);
-    //}
-    //s << "Los mejores 5 clientes son: " << endl;
-    //for (unsigned int i = 0; i < ventas->cantidad() || i< 5; i++) {
-    //    s << ventasOrden->obtener(i)->getCedulaCliente() << "con un importe de " << ventasOrden->obtener(i)->getImporte() << endl;
-    //    s << "------------------" << endl;
-    //}
-    ////sumar las ventas de cada cliente
-    //delete ventasOrden;
-
-
     return s.str();
 }
 
@@ -176,7 +166,7 @@ void Minisuper::ingresarVenta(Venta* venta)
 bool Minisuper::verificarCodigoUnico(string cod)
 {
     bool unico = true;
-    for (unsigned int i = 0; i < productos->cantidad(); i++) {
+    for (unsigned int i = 0; i < productos->cantidad() and unico; i++) {
         if (productos->obtener(i)->getCodigo() == cod)
             unico = false;
     }

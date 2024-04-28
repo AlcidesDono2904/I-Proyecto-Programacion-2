@@ -110,7 +110,7 @@ void Interfaz::VentaGeneraFactura(Minisuper* mini)
 
 						ventaC->setImporte(sub * 0.13 + sub);
 						
-
+						system("CLS");
 						cout << "Su carrito va asi: " << endl << productoC->toString() << endl;
 						if (ventaC != nullptr)
 							sePudo = true;

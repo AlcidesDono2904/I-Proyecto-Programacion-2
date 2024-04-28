@@ -19,6 +19,7 @@ public:
 	T* inicio();
 	T* final();
 	Nodo<T>* getPrimero();
+	void ordenar();
 };
 
 template<class T>
@@ -146,6 +147,26 @@ template<class T>
 inline Nodo<T>* ListaEnlazada<T>::getPrimero()
 {
 	return primero;
+}
+
+template<class T>
+void ListaEnlazada<T>::ordenar() {//ordenamiento burbuja, ordena datos.
+	Nodo<T>* aux = primero;
+	Nodo<T>* aux2 = primero;
+	while (aux != nullptr) {
+		while (aux2 != aux) {
+			if (*aux2->getDato() < *aux->getDato()) {
+				T* dato = aux->getDato();
+				aux->setDato(aux2->getDato());
+				aux2->setDato(dato);
+			}
+			else {
+				aux2 = aux2->getSig();
+			}
+		}
+		aux2 = primero;
+		aux = aux->getSig();
+	}
 }
 
 #endif
