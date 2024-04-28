@@ -40,5 +40,7 @@ public:
 	//archivos
 	void guardarProductos();
 	void leerProductos();
+
+	void guardarVentas();
 };
 #endif

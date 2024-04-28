@@ -32,5 +32,5 @@ public:
 	void setIVA(double iva);
 	void setSubtotal(double subto);
 	string toString() const;
-	
+	void guardarVenta(ostream&);
 };

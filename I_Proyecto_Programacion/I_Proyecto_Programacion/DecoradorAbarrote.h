@@ -7,11 +7,13 @@ class DecoradorAbarrote : public DecoradorAbstracto{
 private:
 	Abarrote* abarrote;
 public:
+
 	DecoradorAbarrote(ComponenteAbstracto* decorar, Abarrote* abarrote);
 	std::string toString() override;
 	virtual ~DecoradorAbarrote();
 	virtual ComponenteAbstracto* clonar();
 	//virtual double CalcularPrecioCarrito(int canti);
+	virtual void guardarCarrito(ostream&);
 };
 
 #endif

@@ -236,3 +236,11 @@ void Minisuper::leerProductos()
     archi.close();
 }
 
+void Minisuper::guardarVentas()
+{
+	ofstream archi;
+	archi.open("./Ventas.txt");
+	for (unsigned int i = 0; i < ventas->cantidad(); i++) {
+		ventas->obtener(i)->guardarVenta(archi);
+	}
+}
