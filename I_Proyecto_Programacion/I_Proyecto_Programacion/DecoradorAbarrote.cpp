@@ -20,3 +20,7 @@ ComponenteAbstracto* DecoradorAbarrote::clonar()
 //{
 //	return abarrote->getPrecioCosto() * canti;
 //}
+
+void DecoradorAbarrote::guardarCarrito(ostream& archi) {
+	this->abarrote->guardarProducto(archi);
+}
