@@ -10,8 +10,10 @@ public:
 	DecoradorEmbutido(ComponenteAbstracto* decorado, Embutido* embutido);
 	virtual ~DecoradorEmbutido();
 	std::string toString();
-	virtual ComponenteAbstracto* clonar();
-	//virtual double CalcularPrecioCarrito(int canti);
+	virtual ComponenteAbstracto* getDecorado();
+	virtual ComponenteAbstracto* clonar(); 
+	virtual void guardarCarrito(ostream&);
+	static ComponenteAbstracto* leerCarrito(istream&);
 };
 
 #endif 

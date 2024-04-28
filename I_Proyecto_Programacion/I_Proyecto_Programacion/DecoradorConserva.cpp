@@ -11,12 +11,23 @@ std::string DecoradorConserva::toString() {
 	return "Conserva: " + conserva->toString() + "\n" + decorado->toString();
 }
 
+ComponenteAbstracto* DecoradorConserva::getDecorado()
+{
+	return decorado;
+}
+
 ComponenteAbstracto* DecoradorConserva::clonar()
 {
 	return new DecoradorConserva(decorado, conserva);
 }
-//
-//double DecoradorConserva::CalcularPrecioCarrito(int canti)
-//{
-//	return 0.0;
-//}
+
+void DecoradorConserva::guardarCarrito(ostream& archi)
+{
+	this->conserva->guardarProducto(archi);
+}
+
+ComponenteAbstracto* DecoradorConserva::leerCarrito(istream&)
+{
+	return nullptr;
+}
+

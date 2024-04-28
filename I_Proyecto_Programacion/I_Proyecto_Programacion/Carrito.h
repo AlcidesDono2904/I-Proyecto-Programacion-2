@@ -8,6 +8,7 @@ class Carrito:public ComponenteAbstracto{
 public:
 	Carrito();
 	virtual ~Carrito();
+	virtual ComponenteAbstracto* getDecorado();
 	std::string toString()override;
 	virtual ComponenteAbstracto* clonar();
 	virtual void guardarCarrito(ostream&);

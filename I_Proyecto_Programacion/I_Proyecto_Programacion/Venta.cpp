@@ -1,14 +1,13 @@
 #include "Venta.h"
 
-Venta::Venta():carrito(nullptr), cantidadProductos(0), importe(0), IVA(0), subtotal(0), cedulaCliente("")
+Venta::Venta():carrito(nullptr), cantidadProductos(0), importe(0), IVA(0), subtotal(0), cedulaCliente(""), numFact(0)
 {
 }
 
 Venta::Venta(ComponenteAbstracto* carri, int cantProd, string cedulaCli)
 :carrito(carri), cantidadProductos(cantProd), cedulaCliente(cedulaCli)
 {
-    
-    
+    numFact = 0;
     IVA = 0.13;
 }
 
@@ -31,9 +30,10 @@ Venta::~Venta()
     if (carrito != nullptr) delete carrito; 
 }
 
-ComponenteAbstracto* Venta::getCarrito()
+
+int Venta::getNumFact()
 {
-    return carrito;
+    return numFact;
 }
 
 
@@ -58,6 +58,11 @@ double Venta::getSubtotal()
     return subtotal;
 }
 
+
+void Venta::setNumFact(int n)
+{
+    numFact = n;
+}
 
 void Venta::setCarrito(ComponenteAbstracto* carri)
 {
@@ -95,6 +100,7 @@ string Venta::toString() const
     stringstream s;
     s << "----FACTURA----" << endl
         << "Cantidad de productos: " << cantidadProductos << endl
+        << "Numero de factura: " << numFact << endl
         << "IVA: " << IVA << endl
         << "Subtotal: " << subtotal << endl
         << "Total: " << importe << endl << endl;
@@ -104,14 +110,21 @@ string Venta::toString() const
     return s.str();
 }
 
-void Venta::guardarVenta(ofstream& archi)
+void Venta::guardarVenta(ostream& archi)
 {
-    stringstream s;
+    archi << cantidadProductos << '\t'
+        << cedulaCliente << '\t'
+        << numFact << '\t'
+        << subtotal << '\t'
+        << importe << endl;
+    if (carrito != nullptr) {
+        while (carrito->getDecorado() != dynamic_cast<Carrito*>(carrito->getDecorado())) {
+            carrito->guardarCarrito(archi);
+        }
+    }
+}
 
-    s<<cantidadProductos<<endl;
-    s<<importe<<endl;
-    s<<IVA<<endl;
-    s<<subtotal<<endl;
-    s<<cedulaCliente<<endl;
-    s<<carrito->guardarCarrito()<<endl;
+Venta* Venta::leerVenta(istream& archi)
+{
+    return nullptr;
 }

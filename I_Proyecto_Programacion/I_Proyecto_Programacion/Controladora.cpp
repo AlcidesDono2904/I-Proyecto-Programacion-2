@@ -32,6 +32,7 @@ void Controladora::control0()
 				case 2: this->controlVentas(); break;
 				case 3: this->controlReportes(); break;
 				case 4: super->guardarProductos();
+					super->guardarVentas();
 					break;//archivos //salir
 
 				default:Interfaz::msjError();

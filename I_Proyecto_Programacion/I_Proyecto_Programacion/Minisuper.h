@@ -42,5 +42,6 @@ public:
 	void leerProductos();
 
 	void guardarVentas();
+	void leerVentas();
 };
 #endif

@@ -11,13 +11,22 @@ std::string DecoradorEmbutido::toString() {
 	return "Embutido: " + embutido->toString() + "\n" + decorado->toString();
 }
 
+ComponenteAbstracto* DecoradorEmbutido::getDecorado()
+{
+	return decorado;
+}
+
 ComponenteAbstracto* DecoradorEmbutido::clonar()
 {
 	return new DecoradorEmbutido(decorado, embutido);
 }
-//double DecoradorEmbutido::CalcularPrecioCarrito(int canti)
-//{
-//	return embutido->getPrecioCosto() * canti;
-//}
 
-//
+void DecoradorEmbutido::guardarCarrito(ostream& archi)
+{
+	this->embutido->guardarProducto(archi);
+}
+
+ComponenteAbstracto* DecoradorEmbutido::leerCarrito(istream&)
+{
+	return nullptr;
+}

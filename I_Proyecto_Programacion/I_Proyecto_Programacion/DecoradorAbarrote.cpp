@@ -11,16 +11,22 @@ std::string DecoradorAbarrote::toString() {
 
 DecoradorAbarrote::~DecoradorAbarrote() {}
 
+ComponenteAbstracto* DecoradorAbarrote::getDecorado()
+{
+	return decorado;
+}
+
 ComponenteAbstracto* DecoradorAbarrote::clonar()
 {
 	return new DecoradorAbarrote(decorado, abarrote);
 }
 
-//double DecoradorAbarrote::CalcularPrecioCarrito(int canti)
-//{
-//	return abarrote->getPrecioCosto() * canti;
-//}
 
 void DecoradorAbarrote::guardarCarrito(ostream& archi) {
 	this->abarrote->guardarProducto(archi);
+}
+
+ComponenteAbstracto* DecoradorAbarrote::leerCarrito(istream&)
+{
+	return nullptr;
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include "Lista.h"
 #include "ComponenteAbstracto.h"
+#include "Carrito.h"
 #include "Producto.h"
 #include <string>
 #include <sstream>
@@ -13,6 +14,7 @@ private:
 	double IVA;
 	double subtotal;
 	string cedulaCliente;
+	int numFact;
 public:
 	Venta();
 	Venta(ComponenteAbstracto* carrito, int cantProd, string cedulaCli);
@@ -24,8 +26,10 @@ public:
 	double getImporte();
 	double getIVA();
 	double getSubtotal();
+	int getNumFact();
+
+	void setNumFact(int n);
 	void setCarrito(ComponenteAbstracto* carrito);
-	
 	void setCantidadProductos(int cantProd);
 	void setCedulaCliente(string cedulaCli);
 	void setImporte(double imp);
@@ -33,4 +37,5 @@ public:
 	void setSubtotal(double subto);
 	string toString() const;
 	void guardarVenta(ostream&);
+	static Venta* leerVenta(istream&);
 };

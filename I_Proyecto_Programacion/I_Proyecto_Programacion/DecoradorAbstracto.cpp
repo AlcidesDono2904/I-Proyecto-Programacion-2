@@ -1,3 +1,3 @@
 #include "DecoradorAbstracto.h"
 
-DecoradorAbstracto::~DecoradorAbstracto() {}//falta implementar
+DecoradorAbstracto::~DecoradorAbstracto() {}

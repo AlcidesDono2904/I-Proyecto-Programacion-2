@@ -8,10 +8,11 @@ private:
 public:
 	DecoradorConserva(ComponenteAbstracto* decorado, Conserva* conserva);
 	virtual ~DecoradorConserva();
-
 	std::string toString()override;
+	virtual ComponenteAbstracto* getDecorado();
 	virtual ComponenteAbstracto* clonar();
-	/*virtual double CalcularPrecioCarrito(int canti);*/
+	virtual void guardarCarrito(ostream&);
+	static ComponenteAbstracto* leerCarrito(istream&);
 };
 
 #endif

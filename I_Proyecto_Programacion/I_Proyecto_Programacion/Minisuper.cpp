@@ -161,6 +161,7 @@ Producto* Minisuper::getProductoPorCodigo(string cod)
 void Minisuper::ingresarVenta(Venta* venta)
 {
     ventas->agregarInicio(venta);
+    
 }
 
 bool Minisuper::verificarCodigoUnico(string cod)
@@ -243,4 +244,8 @@ void Minisuper::guardarVentas()
 	for (unsigned int i = 0; i < ventas->cantidad(); i++) {
 		ventas->obtener(i)->guardarVenta(archi);
 	}
+}
+
+void Minisuper::leerVentas()
+{
 }

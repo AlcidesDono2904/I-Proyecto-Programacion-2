@@ -11,9 +11,10 @@ public:
 	DecoradorAbarrote(ComponenteAbstracto* decorar, Abarrote* abarrote);
 	std::string toString() override;
 	virtual ~DecoradorAbarrote();
+	virtual ComponenteAbstracto* getDecorado();
 	virtual ComponenteAbstracto* clonar();
-	//virtual double CalcularPrecioCarrito(int canti);
 	virtual void guardarCarrito(ostream&);
+	static ComponenteAbstracto* leerCarrito(istream&);
 };
 
 #endif
